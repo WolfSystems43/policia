@@ -21,7 +21,7 @@ class FrequencyController extends Controller
         $this->middleware('auth');
     }
 
-    public function new() {
+    public function generate() {
 
         if (Gate::denies('regenerate-frequencies')) {
             abort(403, 'No tienes permiso para regenerar frecuencias');
