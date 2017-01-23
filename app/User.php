@@ -42,6 +42,9 @@ class User extends Authenticatable
      */
     protected $dates = ['active_at'];
 
+    protected $dontKeepRevisionOf = array(
+        'active_at'
+    );
 
     public function specialties() {
         return $this->belongsToMany('App\Specialty')->withTimestamps();
