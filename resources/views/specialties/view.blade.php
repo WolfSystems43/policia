@@ -61,7 +61,7 @@
 	        </thead>
 
 	        <tbody>
-	        @foreach($specialty->users()->orderBy('rank', 'desc')->get() as $user)
+	        @foreach($specialty->users()->orderBy('name', 'desc')->get() as $user)
 	          <tr>
 	            <td><img height="24" class="left" src="{{ $user->getCorpImage() }}" alt=" Insignia {{ $user->getCorpName() }}"> {{ $user->getCorpName() }}</td>
 	            <td> <img height="24" class="left" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
