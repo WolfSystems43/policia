@@ -9,7 +9,7 @@ return [
     /*
      * API Key (http://steamcommunity.com/dev/apikey)
      */
-    'api_key' => '69CFA7A73BAAAE0D76D485903C11EE4F',
+    'api_key' => '',
     /*
      * Is using https ?
      */
