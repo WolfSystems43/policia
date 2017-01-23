@@ -204,7 +204,7 @@ class User extends Authenticatable
                     break;
                     
                 case 10:
-                    return "Teinente Coronel";
+                    return "Teniente Coronel";
                     break;
                 
                 case 11:
