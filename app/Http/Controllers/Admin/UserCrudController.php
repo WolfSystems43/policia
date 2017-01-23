@@ -163,6 +163,11 @@ class UserCrudController extends CrudController
         ]);
 
         $this->crud->addColumn([
+           'name' => 'shop', // The db column name
+           'label' => "Nivel de tienda" // Table column heading
+        ]);
+        
+        $this->crud->addColumn([
            'name' => 'active_at', // The db column name
            'label' => "Último login" // Table column heading
         ]);
