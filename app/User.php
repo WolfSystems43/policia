@@ -43,7 +43,7 @@ class User extends Authenticatable
     protected $dates = ['active_at'];
 
     protected $dontKeepRevisionOf = array(
-        'active_at'
+        'active_at', 'remember_token', 'password'
     );
 
     public function specialties() {
