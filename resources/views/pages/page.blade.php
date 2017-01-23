@@ -1,5 +1,7 @@
 @extends('layouts.material')
 
+@section('title', $page->title)
+
 @section('content')
 
 <div class="container">

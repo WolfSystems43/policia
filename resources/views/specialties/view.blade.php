@@ -1,5 +1,7 @@
 @extends('layouts.material')
 
+@section('title', $specialty->acronym)
+
 @section('content')
 	<div class="container">
 	<br>
