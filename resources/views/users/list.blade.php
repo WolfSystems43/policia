@@ -116,7 +116,7 @@
         <img height="85" src="/img/divisas/cnpgc.png"> 
       </div>
       <div class="col s9 m11">
-        <h5>Sin cuerpo</h5>
+        <h5>Elección de cuerpo</h5>
         <span>{{ $cadetes->count() }} en total.</span>
       </div>
     </div>
