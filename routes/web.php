@@ -28,10 +28,10 @@ Route::group(['prefix' => 'frecuencias'], function() {
 	Route::post('/regenerar', 'FrequencyController@new')->name('frequencies_new');
 });
 
-Route::group(['prefix' => 'post'], function() {
-	Route::get('/new', 'PostController@newForm');
-	Route::post('/new', 'PostController@new');
-});
+//Route::group(['prefix' => 'post'], function() {
+//	Route::get('/new', 'PostController@newForm');
+//	Route::post('/new', 'PostController@new');
+//});
 
 Route::get('/lista', 'UserController@users')->name('users');
 
