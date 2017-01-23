@@ -18,11 +18,9 @@ Route::get('/', function () {
 // Desactivadas para activar la ruta de Steam
 // Auth::routes();
 
-// TODO limitar acceso
 Route::get('/login', 'AuthController@login')->name('login');
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
-// TODO limitar acceso
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'frecuencias'], function() {
@@ -30,36 +28,30 @@ Route::group(['prefix' => 'frecuencias'], function() {
 	Route::post('/regenerar', 'FrequencyController@new')->name('frequencies_new');
 });
 
-// TODO limitar acceso
 Route::group(['prefix' => 'post'], function() {
 	Route::get('/new', 'PostController@newForm');
 	Route::post('/new', 'PostController@new');
 });
 
-// TODO limitar acceso
 Route::get('/lista', 'UserController@users')->name('users');
 
 Route::group(['prefix' => 'usuario'], function() {
 	Route::get('/{id}', 'UserController@profile')->name('user_profile');
 });
 
-// TODO limitar acceso
 Route::get('/about', 'HomeController@about')->name('about');
 
 
-// TODO limitar acceso
 Route::group(['prefix' => 'admin', 'middleware' => ['admin_only', 'auth']], function() {
 	CRUD::resource('user', 'Admin\UserCrudController');
 	CRUD::resource('specialty', 'Admin\SpecialtyCrudController');
 });
 
-// TODO limitar acceso
 Route::group(['prefix' => 'especializacion'], function() {
-	Route::get('/', 'SpecialtyController@list')->name('specialties');
+	Route::get('/', 'SpecialtyController@listSpecialties')->name('specialties');
 	Route::get('/{id}', 'SpecialtyController@view')->name('specialty-view');
 });
 
-// TODO limitar acceso
 Route::get('/freq/new', 'FrequencyController@generate')->name('freq-new');
 
 // DEBUG

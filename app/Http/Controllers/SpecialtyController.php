@@ -19,7 +19,7 @@ class SpecialtyController extends Controller
         $this->middleware('auth');
     }
 
-    public function list() {
+    public function listSpecialties() {
         $specialties = Specialty::all();
         return view('specialties.list')->with('specialties', $specialties);
     }
