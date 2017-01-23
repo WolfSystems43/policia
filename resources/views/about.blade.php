@@ -7,7 +7,10 @@
 	<h5>Acerca de</h5>
 
 	<div class="card-panel">
-		<p>Esta página ha sido desarrollada por Manolo Pérez (Apecengo) para originalmente <a href="http://plataoplomo.wtf">Plata o Plomo</a>, y el código fuente está disponible para su uso en <a href="https://github.com/apecengo/policia">el repositorio de Github</a>.</p>
+		<p>Esta página ha sido desarrollada por Manolo Pérez (Apecengo) originalmente para la Policía de PoPLife (<a href="http://plataoplomo.wtf">Plata o Plomo</a>).
+		<br>El código fuente está disponible para uso licenciado en <a href="https://github.com/apecengo/policia">este repositorio de Github</a>.</p>
+
+		<p>El sitio está hecho en PHP con <a href="https://laravel.com">Laravel</a> 5.3, Laravel Backpack y <a href="http://materializecss.com">Materializecss</a>, entre otras cosas.</p>
 	</div>
 </div>
 

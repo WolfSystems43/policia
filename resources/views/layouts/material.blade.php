@@ -20,13 +20,17 @@
       <div class="container">
         <div class="nav-wrapper">
           
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="left hide-on-med-and-down">
           <li><a class="waves-effect" href="{{ route('home') }}" class="">{{ Auth::user()->getCorpName() }} - <b>intranet</b></a></li>
-            <li><a class="waves-effect" href="{{ route('users') }}"><i class="material-icons left">people</i> Plantilla</a></li>
          </ul>
           <ul class="right hide-on-med-and-down">
 
            <li><a class="dropdown-button" href="#!" class="" data-activates="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="sass.html">Inicio</a></li>
+            <li><a href="{{ url('/logout') }}">Cerrar sesión</a></li>
           </ul>
         </div>
       </div>
@@ -36,10 +40,14 @@
         
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-      {{-- <li><a href="#!">one</a></li>
-      <li><a href="#!">two</a></li>
-      <li class="divider"></li> --}}
-      <li><a href="{{ route('logout') }}">Cerrar sesión</a></li>
+      <li><a href="{{ route('user_profile', Auth::user()->id) }}" class="waves-effect">Mi perfil</a></li>
+      <li><a href="{{ url('about') }}" class="waves-effect">Acerca de</a></li>
+      @if(Auth::user()->isAdmin())
+      <li class="divider"></li>
+      <li><a class="waves-effect" href="{{ url('/admin') }}"><i class="material-icons left">developer_mode</i> Admin</a></li>
+      @endif
+      <li class="divider"></li>
+      <li><a href="{{ route('logout') }}" class="waves-effect">Cerrar sesión</a></li>
     </ul>
 
       @yield('content')
@@ -50,11 +58,14 @@
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+       <script src="/js/spoiler.js"></script>
        <script>
-           $(document).ready(function() {
-    $('select').material_select();
-  });
-        
+        $(document).ready(function() {
+          $('select').material_select();
+          $(".button-collapse").sideNav();
+          $('.modal').modal();
+        });
+        spoilerAlert('spoiler, .spoiler');
        </script>
     </body>
   </html>

@@ -6,6 +6,8 @@ use Invisnik\LaravelSteamAuth\SteamAuth;
 use App\User;
 use Auth;
 
+use Carbon\Carbon;
+
 class AuthController extends Controller
 {    
 
@@ -28,11 +30,13 @@ class AuthController extends Controller
             if (!is_null($info)) {
                 $user = User::where('steamid', $info->steamID64)->first();
                 if (is_null($user)) {
-                	$user = new User;
-                	$user->name = $info->personaname;
-                	$user->steamid = $info->steamID64;
-                	$user->save();
+                	return redirect('/')->with('status', 'No estás dado de alta como policía.');
                 }
+                if($user->isDisabled()) {
+                    return redirect('/')->with('status', 'Tu cuenta está desactivada.');
+                }
+                $user->active_at = Carbon::now();
+                $user->save();
                 Auth::login($user, true);
                 return redirect('/home'); // redirect to site
             }

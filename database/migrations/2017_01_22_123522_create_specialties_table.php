@@ -16,8 +16,12 @@ class CreateSpecialtiesTable extends Migration
         Schema::create('specialties', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('acronym')->nullable();
+            $table->string('acronym');
             $table->text('description')->nullable();
+            $table->text('message')->nullable();
+            $table->text('frequency')->nullable();
+            $table->boolean('secret')->default(false);
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }

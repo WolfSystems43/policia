@@ -169,6 +169,14 @@ return [
 
         //
         Invisnik\LaravelSteamAuth\SteamServiceProvider::class,
+        Backpack\Base\BaseServiceProvider::class,
+        Backpack\CRUD\CrudServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class, 
+        Backpack\PageManager\PageManagerServiceProvider::class,
+        GrahamCampbell\Markdown\MarkdownServiceProvider::class,
+        AltThree\Emoji\EmojiServiceProvider::class,
+        Backpack\Settings\SettingsServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -226,6 +234,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
 
     ],
 

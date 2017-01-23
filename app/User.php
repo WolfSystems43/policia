@@ -5,9 +5,17 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Carbon\Carbon;
+
 class User extends Authenticatable
 {
     use Notifiable;
+    use \Backpack\CRUD\CrudTrait, \Venturecraft\Revisionable\RevisionableTrait;
+
+    public static function boot()
+    {
+        parent::boot();
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'steamid', 'corp', 'rank', 'disabled', 'profile', 'shop', 'shop_reason'
     ];
 
     /**
@@ -27,8 +35,24 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['active_at'];
+
+
     public function specialties() {
         return $this->belongsToMany('App\Specialty')->withTimestamps();
+    }
+
+    public function ownedSpecialties() {
+        return $this->hasMany('App\Specialty');
+    }
+
+    public function frequencies() {
+        return $this->hasMany('App\Frecuency');
     }
 
     public function getColor() {
@@ -96,11 +120,11 @@ class User extends Authenticatable
                     break;
                     
                 case 3:
-                    return "Agente segundo";
+                    return "Agente Segundo";
                     break;
                     
                 case 4:
-                    return "Agente primero";
+                    return "Agente Primero";
                     break;
                     
                 case 5:
@@ -108,7 +132,7 @@ class User extends Authenticatable
                     break;
                     
                 case 6:
-                    return "Oficial en prácticas";
+                    return "Oficial en Prácticas";
                     break;
                     
                 case 7:
@@ -124,11 +148,11 @@ class User extends Authenticatable
                     break;
                     
                 case 10:
-                    return "Inspector jefe";
+                    return "Inspector Jefe";
                     break;
                 
                 case 11:
-                    return "Comisario";
+                    return "Comisario Policía Nacional";
                     break;
 
                 default:
@@ -145,15 +169,15 @@ class User extends Authenticatable
                     break;
                     
                 case 2:
-                    return "Agente";
+                    return "Guardia Civil";
                     break;
                     
                 case 3:
-                    return "Agente segundo";
+                    return "Guardia Civil de 2ª";
                     break;
                     
                 case 4:
-                    return "Agente primero";
+                    return "Guardia Civil de 1ª Clase";
                     break;
                     
                 case 5:
@@ -161,27 +185,27 @@ class User extends Authenticatable
                     break;
                     
                 case 6:
-                    return "Cabo primero";
-                    break;
-                    
-                case 7:
-                    return "Cabo mayor";
-                    break;
-                    
-                case 8:
                     return "Sargento";
                     break;
                     
-                case 9:
+                case 7:
                     return "Teniente";
                     break;
                     
+                case 8:
+                    return "Capitán";
+                    break;
+                    
+                case 9:
+                    return "Comandante";
+                    break;
+                    
                 case 10:
-                    return "Coronel";
+                    return "Teinente Coronel";
                     break;
                 
                 case 11:
-                    return "Comisario";
+                    return "Coronel";
                     break;
 
                 default:
@@ -226,5 +250,36 @@ class User extends Authenticatable
             return "/img/divisas/gc.png";
         }
         return "/img/divisas/cnpgc.png";
+    }
+
+    public function isAdmin() {
+        return $this->admin;
+    }
+
+    // Míniom Inspector/Comandante o admin
+    public function isMando() {
+        return $this->rank >=9 || $this->isAdmin();
+    }
+
+    public function isDisabled() {
+        return $this->disabled;
+    }
+
+    public function getCreatedDiff() {
+        $last = $this->created_at;
+
+        $dt = Carbon::parse($last);
+
+        Carbon::setLocale('es');
+        return $dt->diffForHumans();
+    }
+
+    public function getLastUpdatedDiff() {
+        $last = $this->updated_at;
+
+        $dt = Carbon::parse($last);
+
+        Carbon::setLocale('es');
+        return $dt->diffForHumans();
     }
 }
