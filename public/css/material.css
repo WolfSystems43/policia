@@ -19,3 +19,7 @@ ul {
 ul li {
     list-style-type: disc;
 }
+
+.navbar-fixed {
+	z-index: 9999; 
+}

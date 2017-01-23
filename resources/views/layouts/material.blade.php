@@ -5,6 +5,7 @@
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
       <link rel="stylesheet" href="/css/material.css">
     
       <title>@yield('title') - Policía POPLife</title>
@@ -20,11 +21,11 @@
       <div class="container">
         <div class="nav-wrapper">
           
-          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          {{-- <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a> --}}
           <ul class="left hide-on-med-and-down">
           <li><a class="waves-effect" href="{{ route('home') }}" class="">{{ Auth::user()->getCorpName() }} - <b>intranet</b></a></li>
          </ul>
-          <ul class="right hide-on-med-and-down">
+          <ul class="right hide-on-large">
 
            <li><a class="dropdown-button" href="#!" class="" data-activates="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
           </ul>
@@ -49,6 +50,12 @@
       <li class="divider"></li>
       <li><a href="{{ route('logout') }}" class="waves-effect">Cerrar sesión</a></li>
     </ul>
+  
+  
+    <div class="hide-on-med-and-up">
+      <a href="{{ route('home') }}" class="btn btn-block {{ Auth::user()->getColor() }} ">Página de inicio</a>
+      <a href="{{ route('logout') }}" class="btn btn-block {{ Auth::user()->getColor() }} ">Cerrar sesión</a>
+    </div>
 
       @yield('content')
 
