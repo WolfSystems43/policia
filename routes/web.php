@@ -60,7 +60,7 @@ Route::group(['prefix' => 'especializacion'], function() {
 });
 
 // TODO limitar acceso
-Route::get('/freq/new', 'FrequencyController@new')->name('freq-new');
+Route::get('/freq/new', 'FrequencyController@generate')->name('freq-new');
 
 // DEBUG
 Route::get('/debug', function() {
