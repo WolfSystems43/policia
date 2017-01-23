@@ -64,6 +64,7 @@ Route::get('/freq/new', 'FrequencyController@new')->name('freq-new');
 
 // DEBUG
 Route::get('/debug', function() {
+	abort('403')
 	$geo = new \App\Specialty;
 	$geo->name = "Grupo Especial de Operaciones";
 	$geo->acronym = "GEO";
