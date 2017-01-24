@@ -11,7 +11,7 @@
 		  {{ csrf_field() }}
 		  <p>Ajustes visuales</p>
 		    <p>
-		      <input type="checkbox" name="dark_mode" class="filled-in" id="filled-in-box" @if(session('dark', true)) checked="checked" @endif />
+		      <input type="checkbox" name="dark_mode" class="filled-in" id="filled-in-box" @if(session('dark', false)) checked="checked" @endif />
 		      <label for="filled-in-box">Modo oscuro</label>
 		    </p>
 			
