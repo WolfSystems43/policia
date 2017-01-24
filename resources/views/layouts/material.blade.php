@@ -78,7 +78,6 @@
   
     <div class="hide-on-med-and-up">
       <a href="{{ route('home') }}" class="btn btn-block {{ Auth::user()->getColor() }} ">Página de inicio</a>
-      <a href="{{ route('logout') }}" class="btn btn-block {{ Auth::user()->getColor() }} ">Cerrar sesión</a>
     </div>
 
       @yield('content')
