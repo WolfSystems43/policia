@@ -7,7 +7,12 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 
       <link rel="stylesheet" href="/css/material.css">
-    
+      @if(session('dark', true))
+
+
+        <link rel="stylesheet" href="/css/material-dark.css">
+      @endif
+
       <title>@yield('title') - Policía POPLife</title>
 
       <link rel="apple-touch-icon" sizes="57x57" href="/img/icon/apple-icon-57x57.png">
@@ -60,6 +65,7 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
       <li><a href="{{ route('user_profile', Auth::user()->id) }}" class="waves-effect">Mi perfil</a></li>
+      <li><a href="{{ route('settings') }}" class="waves-effect">Ajustes</a></li>
       <li><a href="{{ url('about') }}" class="waves-effect">Acerca de</a></li>
       @if(Auth::user()->isAdmin())
       <li class="divider"></li>

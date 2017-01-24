@@ -1,0 +1,25 @@
+body {
+	background-color: #263238;
+	color: white;
+}
+
+.card-panel {
+	color: white;
+	background-color: #37474f;
+}
+
+h5 {
+	color:white;
+}
+
+span {
+	color: white;
+}
+
+a {
+	color: #4fc3f7;
+}
+
+table.highlight > tbody > tr:hover {
+  background-color: #455a64;
+}

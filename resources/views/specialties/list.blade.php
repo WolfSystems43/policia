@@ -17,7 +17,7 @@
 		</div>
 		<div class="col s8 m9 l10 black-text">
 		<span class="flow-text"> {{ $specialty->acronym }}</span>
-		<br>{{ $specialty->name }}
+		<br><span>{{ $specialty->name }}</span>
 		</div>
 	</div>
 	</div>
