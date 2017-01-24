@@ -3,6 +3,7 @@
 <head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link rel="stylesheet" href="//cdn.materialdesignicons.com/1.8.36/css/materialdesignicons.min.css">
   <style>
     body {
       display: flex;
@@ -61,13 +62,13 @@
           {{ csrf_field() }}
             <div class='row'>
               <div class='col s12'>
-              <span>Haz clic para iniciar sesión con tu cuenta de Steam</span>
+              <span> Haz clic para iniciar sesión con tu cuenta de Steam</span>
               </div>
             </div>
             <br />
             <center>
               <div class='row'>
-                <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect green'>Iniciar sesión con Steam</button>
+                <button type='submit' name='btn_login' class='waves-effect btn btn-large  green'><i class="mdi mdi-steam left"></i> Iniciar sesión con Steam</button>
               </div>
             </center>
           </form>
