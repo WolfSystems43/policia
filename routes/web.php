@@ -25,12 +25,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'frecuencias'], function() {
 	Route::get('/', 'FrequencyController@index')->name('frequencies');
-	Route::post('/regenerar', 'FrequencyController@new')->name('frequencies_new');
+	Route::post('/regenerar', 'FrequencyController@generate')->name('frequencies_new');
 });
 
 Route::group(['prefix' => 'ajustes'], function() {
 	Route::get('/', 'SettingsController@settings')->name('settings');
 	Route::post('/', 'SettingsController@saveSettings');
+	Route::post('/correo', 'SettingsController@emailSettings')->name('email-settings');
 });
 
 //

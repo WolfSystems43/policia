@@ -38,6 +38,8 @@
     </head>
 
     <body>
+  
+    @yield('variables')
 
     <div class="navbar-fixed">
       <nav class="{{ Auth::user()->getColor() }}">
@@ -79,8 +81,51 @@
     <div class="hide-on-med-and-up">
       <a href="{{ route('home') }}" class="btn btn-block {{ Auth::user()->getColor() }} ">Página de inicio</a>
     </div>
+      @if (session('status'))
+      <br>
+      <div class="container">
+              <div class="card-panel">
+                <p>{{ session('status') }}</p>
+              </div>
+      </div>
 
+      @endif
+    @if(!Auth::user()->hasMail() && !isset($unlock_page))
+          @if (count($errors) > 0)
+          <div class="container">
+            <div class="card-panel red darken-2 white-text">
+              <ul>
+              @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+                  </ul>
+            </div>
+          </div>
+      @endif
+      <div class="container">
+        <div class="card-panel">
+          <span class="flow-text"><i class="material-icons">contact_mail</i> Añade tu correo</span>
+          <p>Debes añadir un correo electrónico <b>válido</b> a tu cuenta para continar:</p>
+          <form method="post" action="{{ route('email-settings') }}">
+          {{ csrf_field() }}
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="email" placeholder="ejemplo@ejemplo.com" name="email" required="required">
+                  <label for="email">Correo electrónico</label>
+                </div>
+                <div class="input-field col s12">
+                  <input type="email" name="email_confirmation" required="required">
+                  <label for="email_confirmation">Repite el correo</label>
+                </div>
+              </div>
+              <button class="btn green waves-effect">Guardar</button>
+          </form>
+        </div>
+      </div>
+    @else
       @yield('content')
+    @endif
+
 
       {{-- <div class="container">
         <span class="right"><a class="grey-rext" href="{{ route('about') }}">Por Manolo Pérez</a></span>

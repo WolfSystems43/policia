@@ -2,6 +2,14 @@
 
 @section('title', 'Ajustes')
 
+@section('variables')
+
+@php
+$unlock_page = true;
+@endphp
+
+@endsection
+
 @section('content')
 	<div class="container">
 		<br>

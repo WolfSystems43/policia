@@ -268,6 +268,10 @@ class User extends Authenticatable
         return $this->disabled;
     }
 
+    public function hasMail() {
+        return ! is_null($this->email);
+    }
+
     public function getCreatedDiff() {
         $last = $this->created_at;
 
