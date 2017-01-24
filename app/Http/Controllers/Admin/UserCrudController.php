@@ -39,6 +39,10 @@ class UserCrudController extends CrudController
             'label' => "SteamID"
             ]);
         $this->crud->addField([
+            'name' => 'email',
+            'label' => "Correo electrónico",
+            ]);
+        $this->crud->addField([
             'name' => 'profile',
             'label' => "Perfil del foro",
             'type' => 'url'
