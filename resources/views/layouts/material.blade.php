@@ -78,9 +78,10 @@
     </ul>
   
   
-    <div class="hide-on-med-and-up">
+    <div class="hide-on-large-only">
       <a href="{{ route('home') }}" class="btn btn-block {{ Auth::user()->getColor() }} ">Página de inicio</a>
     </div>
+    
       @if (session('status'))
       <br>
       <div class="container">
