@@ -11,6 +11,7 @@
         "backpack/crud": "^3.1",
         "backpack/pagemanager": "^1.1",
         "backpack/settings": "^2.0",
+        "doctrine/dbal": "^2.5",
         "graham-campbell/markdown": "^7.1",
         "invisnik/laravel-steam-auth": "2.*",
         "laravel/framework": "5.3.*"
