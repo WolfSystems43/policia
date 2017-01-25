@@ -36,14 +36,14 @@
   </style>
 </head>
 
-<body>
+<body class="blue-grey darken-3">
   <div class="section"></div>
   <main>
     <center>
       <div class="section"></div>
 
-      <h5 class="indigo-text">Inicio de sesión</h5>
-      <span>Fuerzas de Seguridad del Estado</span>
+      <h5 class="light-blue-text text-accent-2">Inicio de sesión</h5>
+      <span class="white-text">Fuerzas de Seguridad del Estado</span>
       <div class="section"></div>
 
       @if (session('status'))
@@ -56,7 +56,7 @@
 
 
       <div class="container">
-        <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+        <div class="z-depth-1 lighten-4 row card-panel blue-grey darken-2 white-text" style="display: inline-block; padding: 32px 48px 0px 48px; background-color: #455a64;">
 
           <form class="col s12" method="get" action="{{url('login')}}">
           {{ csrf_field() }}
