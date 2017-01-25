@@ -23,9 +23,18 @@ trait PageTemplates
     private function page() {
         $this->crud->addField([
                         'name' => 'content',
-                        'label' => 'Content',
+                        'label' => 'Contenido',
                         'type' => 'simplemde',
-                        'placeholder' => 'Your content here',
+                        'placeholder' => 'Contenido aquí',
+                    ]);
+    }
+
+    private function raw() {
+        $this->crud->addField([
+                        'name' => 'content',
+                        'label' => 'Contenido con HTML',
+                        'type' => 'simplemde',
+                        'placeholder' => 'Contenido aquí',
                     ]);
     }
 
