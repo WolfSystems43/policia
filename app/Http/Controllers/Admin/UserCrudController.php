@@ -59,6 +59,7 @@ class UserCrudController extends CrudController
                                 0 => "Sin cuerpo (a elegir)",
                                 1 => "Cuerpo Nacional de Policía",
                                 2 => "Guardia Civil",
+                                3 => "Invisible",
                             ],
             // optional
             //'inline'      => false, // show the radios all on the same line?
@@ -132,6 +133,7 @@ class UserCrudController extends CrudController
                                 0 => "Sin cuerpo (a elegir)",
                                 1 => "Cuerpo Nacional de Policía",
                                 2 => "Guardia Civil",
+                                3 => "Invisible",
                             ]
         ]);
 
