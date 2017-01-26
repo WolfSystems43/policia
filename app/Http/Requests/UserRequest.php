@@ -27,7 +27,7 @@ class UserRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
         return [
              'name' => 'required|min:5|max:40',
              'steamid' => 'required|min:10',
-             'corp' => 'required|integer|min:0|max:2',
+             'corp' => 'required|integer|min:0|max:3',
              'rank' => 'required|integer|min:0|max:12',
              'shop' => 'required|integer|min:0|max:7',
         ];
