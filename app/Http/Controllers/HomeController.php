@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $links = [ ['Multas y sanciones', 'multas', 'euro_symbol'], ['Normativa', 'normativa-interna', 'class'], ['Lista del personal', 'lista', 'group'], ['Zonas de Asignación', 'zonas-de-asignacion', 'layers'],
-        ['Especializaciones', 'especializacion', 'work']];
+        ['Especializaciones', 'especializacion', 'work'], ['Enlaces', 'enlaces', 'link']];
 
         $user = User::findOrFail(Auth::user()->id);
 
