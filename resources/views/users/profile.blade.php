@@ -43,11 +43,10 @@
 				<p>Todavía no tiene especializaciones.</p>
 			@endif
 		</div>
-		{{--
-		@if($user->profile != "")
-		<a href="{{ $user->profile }}" class="btn">Perfil del foro</a>
-
-		@endif --}}
+		
+		@if( Auth::user()->id != $user->id)
+		<a href="{{ route('ticket_new', ['id' => $user->id]) }}" class="btn grey darken-1 waves-effect">Presentar queja</a>
+		@endif
 
 		@if(Auth::user()->id == $user->id || Auth::user()->isMando())
 		<span class="right"><small><a href="#modalerror">reportar error</a></small></span>

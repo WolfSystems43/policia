@@ -61,6 +61,25 @@ Route::group(['prefix' => 'especializacion'], function() {
 
 Route::get('/freq/new', 'FrequencyController@generate')->name('freq-new');
 
+Route::group(['prefix' => 'ticket'], function() {
+	Route::get('/nuevo/{id?}', 'TicketController@newTicket')->name('ticket_new');
+	Route::post('/nuevo/{id?}', 'TicketController@newTicketPost');
+	Route::get('/{id}', 'TicketController@viewTicket')->name('ticket');
+	Route::post('/{id}/respuesta', 'TicketController@newReply')->name('ticket_reply');
+	Route::post('/{id}/cerrar', 'TicketController@closeTicket')->name('ticket_close');
+	Route::post('/{id}/abrir', 'TicketController@openTicket')->name('ticket_open');
+});
+
+Route::group(['prefix' => 'tickets'], function() {
+	Route::get('/', 'TicketController@listTickets')->name('tickets');
+	Route::get('/cerrados', 'TicketController@listClosedTickets')->name('tickets_closed');
+	Route::get('/mios', 'TicketController@listUserTickets')->name('my_tickets');
+});
+
+Route::group(['prefix' => 'api'], function() {
+	Route::get('/users/search/input', 'UserController@searchInput')->name('api_user_search_input');
+});
+
 // DEBUG
 Route::get('/debug', function() {
 	abort('403');

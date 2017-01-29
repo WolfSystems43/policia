@@ -5,6 +5,8 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+      
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 
       <link rel="stylesheet" href="/css/material.css">
       @if(session('dark', false))
@@ -67,8 +69,13 @@
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
       <li><a href="{{ route('user_profile', Auth::user()->id) }}" class="waves-effect">Mi perfil</a></li>
+      <li><a href="{{ route('my_tickets') }}" class="waves-effect">Mis tickets</a></li>
       <li><a href="{{ route('settings') }}" class="waves-effect">Ajustes</a></li>
-      <li><a href="{{ url('about') }}" class="waves-effect">Acerca de</a></li>
+      <li><a href="{{ route('about') }}" class="waves-effect">Acerca de</a></li>
+      @can('admin-tickets')
+      <li class="divider"></li>
+      <li><a href="{{ route('tickets') }}" class="waves-effect">Quejas internas</a></li>
+      @endcan
       @if(Auth::user()->isAdmin())
       <li class="divider"></li>
       <li><a class="waves-effect" href="{{ url('/admin') }}"><i class="material-icons left">developer_mode</i> Admin</a></li>
@@ -134,6 +141,7 @@
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
        <script src="/js/spoiler.js"></script>
        <script>
         $(document).ready(function() {
@@ -153,5 +161,7 @@
         ga('send', 'pageview');
 
       </script>
+
+      @yield('footer')
     </body>
   </html>

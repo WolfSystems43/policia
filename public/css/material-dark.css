@@ -23,3 +23,7 @@ a {
 table.highlight > tbody > tr:hover {
   background-color: #455a64;
 }
+
+.modal {
+	background-color: #37474f;
+}

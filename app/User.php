@@ -15,6 +15,7 @@ class User extends Authenticatable
     public static function boot()
     {
         parent::boot();
+
     }
 
     /**
@@ -56,6 +57,40 @@ class User extends Authenticatable
 
     public function frequencies() {
         return $this->hasMany('App\Frecuency');
+    }
+
+    public function ticketsInvolved() {
+        return $this->belongsToMany('App\Ticket');
+    }
+
+    public function tickets() {
+        return $this->hasMany('App\Ticket');
+    }
+
+    public function replies() {
+        return $this->hasMany('App\Reply');
+    }
+
+    /**
+     * Scope a query to only include active users.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOpen($query)
+    {
+        return $query->where('closed', 0);
+    }
+
+    /**
+     * Scope a query to only include active users.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeClosed($query)
+    {
+        return $query->where('closed', 1);
     }
 
     public function getColor() {
@@ -266,6 +301,10 @@ class User extends Authenticatable
 
     public function isDisabled() {
         return $this->disabled;
+    }
+
+    public function isIA() {
+        return \App\Specialty::find(6)->user == $this || $this->isAdmin();
     }
 
     public function hasMail() {

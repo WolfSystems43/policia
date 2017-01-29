@@ -38,4 +38,22 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         return view('users.profile')->with('user', $user);
     }
+
+    public function searchInput(Request $request) {
+        if(is_null($request->q) || $request->q == "" || strlen($request->q) < 3 ) {
+            return [];
+        }
+
+        $users = User::where('name', $request->q)
+    ->orWhere('name', 'like', '%' . $request->q . '%')->where('disabled', 0)->get();
+
+        $result = [];
+        $i = 0;
+        foreach ($users as $user) {
+            $result[$i] = ['id' => $user->id, 'text' => $user->name, 'corp' => $user->corp, 'rank' => $user->getRankName()];
+            $i++;
+        }
+
+        return $result;
+    }
 }
