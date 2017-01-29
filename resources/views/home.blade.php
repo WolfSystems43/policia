@@ -17,6 +17,15 @@
 			@endforeach
     	</div>
 		
+        @can('admin-tickets')
+        @if($tickets_open > 0)
+        <p><img height="16" src="/img/divisas/especialidades/6.png" alt="Asuntos Internos"> Tickets esperando</p>
+        <div class="card-panel">
+            <p>Hay <a href="{{ route('tickets') }}">{{ $tickets_open }} tickets abiertos</a> a la espera.</p>
+        </div>
+        @endif 
+        @endcan
+
 		@if($tickets->count() > 0)
     	<p>Tus tickets abiertos</p>
     		<ul>

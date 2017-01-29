@@ -7,6 +7,8 @@ use App\User;
 
 use Auth;
 
+use App\Ticket;
+
 class HomeController extends Controller
 {
     /**
@@ -34,7 +36,9 @@ class HomeController extends Controller
 
         $tickets = $user->tickets()->where('closed', 0)->get();
 
-        return view('home')->with('links', $links)->with('tickets', $tickets);
+        $tickets_open = Ticket::where('closed', 0)->count();
+
+        return view('home')->with('links', $links)->with('tickets', $tickets)->with('tickets_open', $tickets_open);
     }
 
     public function about() {
