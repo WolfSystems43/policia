@@ -39,7 +39,7 @@ class FrequencyController extends Controller
     	for ($i=0; $i < count($names); $i++) {
     		
     		
-    		$num = rand(1000, 5999);
+    		$num = rand(1000, 9999);
     		if ($num % 10 == 0) {
     			$num = $num/10 . ".0";
     		} else {
