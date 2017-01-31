@@ -26,10 +26,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // ['Frecuencias y radio', 'frecuencias', 'settings_input_antenna'],
+    // 
     public function index()
     {
-        $links = [ ['Multas y sanciones', 'multas', 'euro_symbol'], ['Normativa', 'normativa-interna', 'class'], ['Lista del personal', 'lista', 'group'], ['Zonas de Asignación', 'zonas-de-asignacion', 'layers'],
+        $links = [['Frecuencias y radio', 'frecuencias', 'settings_input_antenna'], ['Multas y sanciones', 'multas', 'euro_symbol'], ['Normativa', 'normativa-interna', 'class'], ['Lista del personal', 'lista', 'group'], ['Zonas de Asignación', 'zonas-de-asignacion', 'layers'],
         ['Especializaciones', 'especializacion', 'work'], ['Enlaces', 'enlaces', 'link']];
 
         $user = User::findOrFail(Auth::user()->id);
