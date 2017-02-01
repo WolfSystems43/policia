@@ -76,8 +76,7 @@ class FrequencyController extends Controller
 
         $freq = Frequency::orderBy('created_at', 'desc')->first();
         $ems = collect($freq->content)->where(0, 'EMS')->first();
-        $result = ['ems' => $ems[1], 'date' => $freq->created_at];
-        return $result;
+        return $ems[1];
     }
 
 }
