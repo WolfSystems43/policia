@@ -69,4 +69,14 @@ class FrequencyController extends Controller
         return view('frequencies.list')->with('frequencies', $frequencies)->with('frequency', $freq);
     }
 
+    public function emsApi($key) {
+        if(!($key == env('APP_EMS', ""))) {
+            abort(403);
+        }
+
+        $freq = Frequency::orderBy('created_at', 'desc')->first();
+        $ems = collect($freq->content)->where(0, 'EMS')->first();
+        return $ems[1];
+    }
+
 }

@@ -34,10 +34,10 @@ Route::group(['prefix' => 'ajustes'], function() {
 	Route::post('/correo', 'SettingsController@emailSettings')->name('email-settings');
 });
 
-//
+
 //Route::group(['prefix' => 'post'], function() {
 //	Route::get('/new', 'PostController@newForm');
-//	Route::post('/new', 'PostController@new');
+//	Route::post('/new', 'PostController@newPost');
 //});
 
 Route::get('/lista', 'UserController@users')->name('users');
@@ -78,6 +78,7 @@ Route::group(['prefix' => 'tickets'], function() {
 
 Route::group(['prefix' => 'api'], function() {
 	Route::get('/users/search/input', 'UserController@searchInput')->name('api_user_search_input');
+	Route::get('/frequencies/ems/{key}', 'FrequencyController@emsApi')->name('api_frequency_ems');
 });
 
 // DEBUG
