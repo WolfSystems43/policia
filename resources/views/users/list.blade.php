@@ -11,9 +11,9 @@
         <img height="85" src="/img/divisas/cnp.png"> 
       </div>
       <div class="col s9 m11">
-<span><small class="right">última actualización {{ $last }}</small></span>
+<span><small class="right">{{ trans('messages.list_last_update', ['ago' =>$last ]) }}</small></span>
         <h5>Cuerpo Nacional de Policía</h5>
-        <span>{{ $cnp->count() }} en total.</span>
+        <span>{{ trans('messages.list_total', ['num' => $cnp->count()]) }}</span>
       </div>
     </div>
 
@@ -21,9 +21,9 @@
       <table class="highlight">
         <thead>
           <tr>
-              <th data-field="rank">Rango</th>
-              <th data-field="name">Nombre</th>
-              <th data-field="name">Especialidades</th>
+              <th data-field="rank">{{ trans('messages.list_rank') }}</th>
+              <th data-field="name">{{ trans('messages.list_name') }}</th>
+              <th data-field="name">{{ trans('messages.list_specialties') }}</th>
           </tr>
         </thead>
 
@@ -64,7 +64,7 @@
       </div>
       <div class="col s9 m11">
         <h5>Guardia Civil</h5>
-        <span>{{ $gc->count() }} en total.</span>
+        <span>{{ trans('messages.list_total', ['num' => $gc->count()]) }}</span>
       </div>
     </div>
 
@@ -72,9 +72,9 @@
       <table class="highlight">
         <thead>
           <tr>
-              <th data-field="rank">Rango</th>
-              <th data-field="name">Nombre</th>
-              <th data-field="name">Especialidades</th>
+              <th data-field="rank">{{ trans('messages.list_rank') }}</th>
+              <th data-field="name">{{ trans('messages.list_name') }}</th>
+              <th data-field="name">{{ trans('messages.list_specialties') }}</th>
           </tr>
         </thead>
 
@@ -117,7 +117,7 @@
       </div>
       <div class="col s9 m11">
         <h5>Elección de cuerpo</h5>
-        <span>{{ $cadetes->count() }} en total.</span>
+        <span>{{ trans('messages.list_total', ['num' => $cadetes->count()]) }}</span>
       </div>
     </div>
 
@@ -125,9 +125,9 @@
       <table class="highlight">
         <thead>
           <tr>
-              <th data-field="rank">Rango</th>
-              <th data-field="name">Nombre</th>
-              <th data-field="name">Especialidades</th>
+              <th data-field="rank">{{ trans('messages.list_rank') }}</th>
+              <th data-field="name">{{ trans('messages.list_name') }}</th>
+              <th data-field="name">{{ trans('messages.list_specialties') }}</th>
           </tr>
         </thead>
 

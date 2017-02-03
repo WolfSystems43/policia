@@ -16,7 +16,7 @@
 		</div>
 		
 		@if(!is_null($specialty->description))
-		<p>Descripción</p>
+		<p>{{ trans('messages.specialty_description') }}</p>
 		<div class="card-panel">
 			
 		<?php echo GrahamCampbell\Markdown\Facades\Markdown::convertToHtml($specialty->description); ?>
@@ -25,7 +25,7 @@
 
 		@can('view-specialty-message', $specialty)
 		@if(!is_null($specialty->message))
-			<p>Mensaje para miembros</p>
+			<p>{{ trans('messages.specialty_members_message') }}</p>
 			<div class="card-panel">
 				<?php echo GrahamCampbell\Markdown\Facades\Markdown::convertToHtml($specialty->message); ?>
 			</div>
@@ -35,7 +35,7 @@
 
 		@can('view-secret-specialty', $specialty)
 		@if($specialty->secret)
-		<p>Confidencial</p>
+		<p>{{ trans('messages.specialty_classified') }}</p>
 		<div class="card-panel">
 			<p>Este grupo se considera secreto. Está prohibido compartir sus miembros, funcionamiento, etc. 
 			@if(Auth::user()->isMando())
@@ -48,15 +48,15 @@
 
 
 
-		<p>Miembros ({{ $specialty->users->count() }} en total)</p>
+		<p>{{ trans('messages.specialty_members', ['num' => $specialty->users->count()]) }}</p>
 
 		<div class="card-panel">
 			<table class="highlight">
 	        <thead>
 	          <tr>
-	              <th data-field="corp">Cuerpo</th>
-	              <th data-field="rank">Rango</th>
-	              <th data-field="name">Nombre</th>
+	              <th data-field="corp">{{ trans('messages.specialty_corp') }}</th>
+	              <th data-field="rank">{{ trans('messages.specialty_rank') }}</th>
+	              <th data-field="name">{{ trans('messages.specialty_name') }}</th>
 	          </tr>
 	        </thead>
 
@@ -81,10 +81,10 @@
 	        </table>
 		</div>
 
-		<p><small>última edición {{ $specialty->getLastUpdatedDiff() }}
+		<p><small>{{ trans('messages.specialty_last_update', ['ago' => $specialty->getLastUpdatedDiff()]) }}
 		
 		@if(!is_null($specialty->user))
-		<span class="small right">Mando:  <a href="{{ route('user_profile', $specialty->user->id) }}">{{ $specialty->user->getRankName() }} {{ $specialty->user->name }}</a></span>
+		<span class="small right">{{ trans('messages.specialty_boss') }}  <a href="{{ route('user_profile', $specialty->user->id) }}">{{ $specialty->user->getRankName() }} {{ $specialty->user->name }}</a></span>
 		@endif
 		</small></p>
 		@endcan
@@ -102,7 +102,7 @@
 
 		@can('admin')	
 		<span class="right">
-		<a href="/admin/specialty/{{ $specialty->id }}/edit" class="btn black white-text waves-effect waves-light"><i class="material-icons left">developer_mode</i> Editar</a>
+		<a href="/admin/specialty/{{ $specialty->id }}/edit" class="btn black white-text waves-effect waves-light"><i class="material-icons left">developer_mode</i> {{ trans('messages.specialty_admin_edit') }}</a>
 		</span>
 		@endcan
 

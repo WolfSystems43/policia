@@ -12,7 +12,7 @@
 			</div>
 			<div class="col s9 m11">
 				<h5>{{ $user->name }}</h5>
-				<span>{{ $user->getCorpName() }} <span class="right"><small>policía desde {{ $user->getCreatedDiff() }}</small></span></span>
+				<span>{{ $user->getCorpName() }} <span class="right"><small>{{ trans('messages.profile_member_since', ['ago' => $user->getCreatedDiff()]) }}</small></span></span>
 
 			</div>
 		</div>
@@ -40,16 +40,16 @@
           @endforeach
 			
 			@if($cuenta == 0)
-				<p>Todavía no tiene especializaciones.</p>
+				<p>{{ trans('messages.profile_specialties_none') }}</p>
 			@endif
 		</div>
 		
 		@if( Auth::user()->id != $user->id)
-		<a href="{{ route('ticket_new', ['id' => $user->id]) }}" class="btn grey darken-1 waves-effect">Presentar queja</a>
+		<a href="{{ route('ticket_new', ['id' => $user->id]) }}" class="btn grey darken-1 waves-effect">{{ trans('messages.profile_complaint_button') }}</a>
 		@endif
 
 		@if(Auth::user()->id == $user->id || Auth::user()->isMando())
-		<span class="right"><small><a href="#modalerror">reportar error</a></small></span>
+		<span class="right"><small><a href="#modalerror">{{ trans('messages.profile_error') }}</a></small></span>
 		@endif
 		 
 		  
@@ -57,18 +57,18 @@
 		  <!-- Modal Structure -->
 		  <div id="modalerror" class="modal">
 		    <div class="modal-content">
-		      <h4>Reportar un error</h4>
-		      <p>Si crees que hay un error en algún dato de esta página ponte en contacto con un Comisario, Coronel o Comisario Principal. </p>
+		      <h4>{{ trans('messages.profile_error_modal_title') }}</h4>
+		      <p>{{ trans('messages.profile_error_modal_description') }}</p>
 		    </div>
 		    <div class="modal-footer">
-		      <a href="#!" class=" modal-action modal-close waves-effect btn-flat">Cerrar</a>
+		      <a href="#!" class=" modal-action modal-close waves-effect btn-flat">{{ trans('messages.profile_error_modal_close') }}</a>
 		    </div>
 		  </div>
 		
 		@can('admin')	
 		<br><br>
 		<span class="right">
-		<a href="/admin/user/{{ $user->id }}/edit" class="btn black white-text waves-effect waves-light"><i class="material-icons left">developer_mode</i> Editar</a>
+		<a href="/admin/user/{{ $user->id }}/edit" class="btn black white-text waves-effect waves-light"><i class="material-icons left">developer_mode</i> {{ trans('messages.profile_admin_edit') }}</a>
 		</span>
 		@endcan
 		

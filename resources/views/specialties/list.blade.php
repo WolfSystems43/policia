@@ -1,11 +1,11 @@
 @extends('layouts.material')
 
-@section('title', 'Especializaciones')
+@section('title', trans('messages.specialties_title'))
 
 @section('content')
 <div class="container">
 <br>
-	<h5>Especializaciones</h5>
+	<h5>{{ trans('messages.specialties_title') }}</h5>
 	<br>
 
 	@foreach($specialties as $specialty)
@@ -27,7 +27,7 @@
 
 		@can('admin')	
 		<span class="right">
-		<a href="/admin/specialty/" class="btn black white-text waves-effect waves-light"><i class="material-icons left">developer_mode</i> Lista</a>
+		<a href="/admin/specialty/" class="btn black white-text waves-effect waves-light"><i class="material-icons left">developer_mode</i> {{ trans('messages.specialties_admin_list') }}</a>
 		</span>
 		<br><br>
 		@endcan

@@ -1,13 +1,13 @@
 @extends('layouts.material')
 
-@section('title', 'Frecuencias')
+@section('title', trans('messages.frequencies_title'))
 
 @section('content')
 <div class="section">
     <div class="container">
     	<div class="row">
     		<div class="col s12 l6">
-        		<h5>Frecuencias <small title="Generado por {{ $frequency->user->name }}">{{ $frequency->getLastStatusDiff() }}</small></h5>
+        		<h5>{{ trans('messages.frequencies_title') }} <small title="{{ trans('messages.frequencies_last_updated_user', ['name' => $frequency->user->name]) }}">{{ $frequency->getLastStatusDiff() }}</small></h5>
     		</div>
     		<div class="col s12 l6">
     		</div>
@@ -16,8 +16,8 @@
               <table class="highlight">
 		        <thead>
 		          <tr>
-		              <th data-field="id">Nombre</th>
-		              <th data-field="name">Frecuencia</th>
+		              <th data-field="id">{{ trans('messages.frequencies_name') }}</th>
+		              <th data-field="name">{{ trans('messages.frequencies_frequency') }}</th>
 		          </tr>
 		        </thead>
 
@@ -32,15 +32,11 @@
 		      </table>
 				@can('regenerate-frequencies')
 				<div class="divider"></div>
-				<p><b>Regenerar frecuencias</b></p>
-		      <p>Como mando, puedes regenerar las frecuencias. A tener en cuenta:</p>
-		      <ol>
-		      	<li>Las frecuencias se regeneran para ambos servidores</li>
-		      	<li>Para regenerar de cara a un reinicio, debe ser como mínimo menos 5.</li>
-		      </ol>
-		      	<form action="{{ route('frequencies_new') }}" method="POST" onsubmit="return confirm('¿Regenerar ferecuencias?');">
+				<p><b>{{ trans('messages.frequencies_regenerate_title') }}</b></p>
+		      {!! trans('messages.frequencies_regenerate_subtitle') !!}
+		      	<form action="{{ route('frequencies_new') }}" method="POST" onsubmit="return confirm('{{ trans('messages.frequencies_regenerate_confirm') }}');">
 		      	{{ csrf_field() }}
-		      	<button class="btn">Regenerar frecuencias</button>
+		      	<button class="btn">{{ trans('messages.frequencies_regenerate_button') }}</button>
 		      	</form>
         		@endcan
 		      </div>

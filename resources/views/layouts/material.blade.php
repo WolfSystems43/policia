@@ -50,7 +50,7 @@
           
           {{-- <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a> --}}
           <ul class="left hide-on-med-and-down">
-          <li><a class="waves-effect" href="{{ route('home') }}" class="">{{ Auth::user()->getCorpName() }} - <b>intranet</b></a></li>
+          <li><a class="waves-effect" href="{{ route('home') }}" class=""> {!! trans('messages.menu_title', ['corp' => Auth::user()->getCorpName()]) !!}</a></li>
          </ul>
           <ul class="right hide-on-large">
 
@@ -68,25 +68,25 @@
         
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-      <li><a href="{{ route('user_profile', Auth::user()->id) }}" class="waves-effect">Mi perfil</a></li>
-      <li><a href="{{ route('my_tickets') }}" class="waves-effect">Mis tickets</a></li>
-      <li><a href="{{ route('settings') }}" class="waves-effect">Ajustes</a></li>
-      <li><a href="{{ route('about') }}" class="waves-effect">Acerca de</a></li>
+      <li><a href="{{ route('user_profile', Auth::user()->id) }}" class="waves-effect">{{ trans('messages.menu_profile') }}</a></li>
+      <li><a href="{{ route('my_tickets') }}" class="waves-effect">{{ trans('messages.menu_tickets') }}</a></li>
+      <li><a href="{{ route('settings') }}" class="waves-effect">{{ trans('messages.menu_settings') }}</a></li>
+      <li><a href="{{ route('about') }}" class="waves-effect">{{ trans('messages.menu_about') }}</a></li>
       @can('admin-tickets')
       <li class="divider"></li>
-      <li><a href="{{ route('tickets') }}" class="waves-effect">Quejas internas</a></li>
+      <li><a href="{{ route('tickets') }}" class="waves-effect">{{ trans('messages.menu_iatickets') }}</a></li>
       @endcan
       @if(Auth::user()->isAdmin())
       <li class="divider"></li>
-      <li><a class="waves-effect" href="{{ url('/admin') }}"><i class="material-icons left">developer_mode</i> Admin</a></li>
+      <li><a class="waves-effect" href="{{ url('/admin') }}"><i class="material-icons left">developer_mode</i> {{ trans('messages.menu_admin') }}</a></li>
       @endif
       <li class="divider"></li>
-      <li><a href="{{ route('logout') }}" class="waves-effect">Cerrar sesión</a></li>
+      <li><a href="{{ route('logout') }}" class="waves-effect">{{ trans('messages.menu_logout') }}</a></li>
     </ul>
   
   
     <div class="hide-on-large-only">
-      <a href="{{ route('home') }}" class="btn btn-block {{ Auth::user()->getColor() }} ">Página de inicio</a>
+      <a href="{{ route('home') }}" class="btn btn-block {{ Auth::user()->getColor() }} ">{{ trans('messages.menu_mobile_home') }}</a>
     </div>
     
       @if (session('status'))
@@ -113,20 +113,20 @@
       <div class="container">
         <div class="card-panel">
           <span class="flow-text"><i class="material-icons">contact_mail</i> Añade tu correo</span>
-          <p>Debes añadir un correo electrónico <b>válido</b> a tu cuenta para continar:</p>
+          <p>{!! trans('messages.mail_subtitle') !!}</p>
           <form method="post" action="{{ route('email-settings') }}">
           {{ csrf_field() }}
               <div class="row">
                 <div class="input-field col s12">
                   <input type="email" placeholder="ejemplo@ejemplo.com" name="email" required="required">
-                  <label for="email">Correo electrónico</label>
+                  <label for="email">{{ trans('messages.mail_label') }}</label>
                 </div>
                 <div class="input-field col s12">
                   <input type="email" name="email_confirmation" required="required">
-                  <label for="email_confirmation">Repite el correo</label>
+                  <label for="email_confirmation">{{ trans('messages.mail_label_confirmation') }}</label>
                 </div>
               </div>
-              <button class="btn green waves-effect">Guardar</button>
+              <button class="btn green waves-effect">{{ trans('messages.mail_save') }}</button>
           </form>
         </div>
       </div>

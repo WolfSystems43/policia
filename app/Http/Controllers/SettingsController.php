@@ -44,6 +44,6 @@ class SettingsController extends Controller
     	$user = Auth::user();
     	$user->email = $request->email;
     	$user->save();
-    	return redirect(route('home'))->with('status', 'Correo guardado correctamente.');
+    	return redirect(route('home'))->with('status', trans('messages.mail_saved'));
     }
 }

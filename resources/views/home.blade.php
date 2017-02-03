@@ -1,6 +1,6 @@
 @extends('layouts.material')
 
-@section('title', 'Página principal')
+@section('title', trans('messages.home_title'))
 
 @section('content')
 <div class="section">
@@ -19,9 +19,9 @@
 		
         @can('admin-tickets')
         @if($tickets_open > 0)
-        <p><img height="16" src="/img/divisas/especialidades/6.png" alt="Asuntos Internos"> Tickets esperando</p>
+        <p><img height="16" src="/img/divisas/especialidades/6.png"> {{ trans('messages.home_tickets_waiting') }}</p>
         <div class="card-panel">
-            <p>Hay <a href="{{ route('tickets') }}">{{ $tickets_open }} tickets abiertos</a> a la espera.</p>
+            <p><a href="{{ route('tickets') }}">{{ trans_choice('messages.home_tickets_waiting_content', $tickets_open, ['num' => $tickets_open]) }}</a></p>
         </div>
         @endif 
         @endcan
@@ -38,7 +38,7 @@
     					<br><span>{{ $ticket->getCreatedDiff() }}</span>
     				</div>
     				<div class="col s12 m6">
-    					<span><b>{{ $ticket->replies->count() }}</b> respuestas
+    					<span>{!! trans_choice('messages.home_tickets_open_replies', $ticket->replies->count(), ['num' => $ticket->replies->count()]) !!}
     					@if($ticket->replies->count() > 0) 
     					({{ $ticket->getLastReply()->getCreatedDiff() }})</span>
     					@endif
