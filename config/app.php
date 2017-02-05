@@ -14,6 +14,12 @@ return [
 
     'name' => 'Policía Intranet',
 
+
+    /*
+    | VERSION
+    */
+    'version' => '1.3',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
