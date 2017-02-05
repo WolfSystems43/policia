@@ -176,6 +176,7 @@ return [
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         AltThree\Emoji\EmojiServiceProvider::class,
         Backpack\Settings\SettingsServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
 
 
         /*

@@ -14,12 +14,12 @@
         "doctrine/dbal": "^2.5",
         "graham-campbell/markdown": "^7.1",
         "invisnik/laravel-steam-auth": "2.*",
-        "laravel/framework": "5.3.*"
+        "laravel/framework": "5.4.*",
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "backpack/generators": "^1.1",
         "fzaninotto/faker": "~1.4",
-        "laracasts/generators": "^1.1",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",

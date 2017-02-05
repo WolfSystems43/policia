@@ -304,6 +304,9 @@ class User extends Authenticatable
     }
 
     public function isIA() {
+        if(is_null(\App\Specialty::find(6))) {
+            return false;
+        }
         return \App\Specialty::find(6)->user == $this || $this->isAdmin();
     }
 

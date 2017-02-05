@@ -7,7 +7,7 @@ return [
 	'menu_profile' => 'Mi perfil',
 	'menu_tickets' => 'Mis tickets',
 	'menu_settings' => 'Ajustes',
-	'menu_about' => 'About',
+	'menu_about' => 'Acerca de',
 	'menu_iatickets' => 'Quejas internas',
 	'menu_logout' => 'Cerrar sesión',
 	'menu_admin' => 'Admin',
