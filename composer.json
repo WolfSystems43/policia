@@ -14,7 +14,8 @@
         "doctrine/dbal": "^2.5",
         "graham-campbell/markdown": "^7.1",
         "invisnik/laravel-steam-auth": "2.*",
-        "laravel/framework": "5.4.*"
+        "laravel/framework": "5.4.*",
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "backpack/generators": "^1.1",
