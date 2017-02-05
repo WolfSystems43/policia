@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "apecengo/policia",
+    "description": "Intranet policía",
+    "keywords": ["laravel"],
     "license": "MIT",
     "type": "project",
     "require": {
