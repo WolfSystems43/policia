@@ -23,7 +23,7 @@
 
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/user') }}"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/specialty') }}"><i class="fa fa-book"></i> <span>Especialidades</span></a></li>
-          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/post') }}"><i class="fa fa-user"></i> <span>Comunicados</span></a></li>
+          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/post') }}"><i class="fa fa-file"></i> <span>Comunicados</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Páginas</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/setting') }}"><i class="fa fa-cog"></i> <span>Ajustes</span></a></li>
 
