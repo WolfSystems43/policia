@@ -48,7 +48,7 @@ class RegenerateFrequencies extends Command
         $names = ["Alpha", "Bravo", "Charly", "Delta", "Eco", "Foxtrot", "Golf", "Hotel",
         "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", 
         "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whisky", "X-Ray", "Yankee", "Zulu",
-        "EMS", "H-50", "Metacóptero", "Z-10", "Z-11", "Z-20", "Z-21", "Z-30", "Z-31", "UPR", "Alpha 100", "Bravo 100",
+        "EMS", "Seguridad Privada", "Asignación", "H-50", "Metacóptero", "Z-10", "Z-11", "Z-20", "Z-21", "Z-30", "Z-31", "Z-40", "UPR", "Alpha 100", "Bravo 100",
         "Charly 100", "Delta 100", "Echo 100", "Foxtrot 100", "UIP/GRS", "ATGC 10", "ATGC 20", 
         "Intervención", "Marítima"];
 
@@ -67,6 +67,5 @@ class RegenerateFrequencies extends Command
         $frequency->content = $freq;
         $frequency->user_id = 1;
         $frequency->save();
-        Log::info('***** FRECUENCIAS REGENERADAS ******');
     }
 }

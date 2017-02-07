@@ -40,6 +40,11 @@ Route::group(['prefix' => 'ajustes'], function() {
 //	Route::post('/new', 'PostController@newPost');
 //});
 
+Route::group(['prefix' => 'comunicado'], function() {
+	Route::get('/{id}', 'PostController@viewPost')->name('post');
+	Route::get('/', 'PostController@listPosts')->name('posts');
+});
+
 Route::get('/lista', 'UserController@users')->name('users');
 
 Route::group(['prefix' => 'usuario'], function() {
@@ -52,6 +57,7 @@ Route::get('/about', 'HomeController@about')->name('about');
 Route::group(['prefix' => 'admin', 'middleware' => ['admin_only', 'auth']], function() {
 	CRUD::resource('user', 'Admin\UserCrudController');
 	CRUD::resource('specialty', 'Admin\SpecialtyCrudController');
+	CRUD::resource('post', 'Admin\PostCrudController');
 });
 
 Route::group(['prefix' => 'especializacion'], function() {
