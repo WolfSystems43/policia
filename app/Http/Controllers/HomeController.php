@@ -8,6 +8,7 @@ use App\User;
 use Auth;
 
 use App\Ticket;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -29,8 +30,15 @@ class HomeController extends Controller
     // 
     public function index()
     {
-        $links = [['Frecuencias y radio', 'frecuencias', 'settings_input_antenna'], ['Multas y sanciones', 'multas', 'euro_symbol'], ['Normativa', 'normativa-interna', 'class'], ['Lista del personal', 'lista', 'group'], ['Zonas de Asignación', 'zonas-de-asignacion', 'layers'],
-        ['Especializaciones', 'especializacion', 'work'], ['Enlaces', 'enlaces', 'link']];
+        $links = [
+            ['Frecuencias y radio', 'frecuencias', 'settings_input_antenna'], 
+            ['Multas y sanciones', 'multas', 'euro_symbol'], 
+            ['Normativa', 'normativa-interna', 'class'], 
+            ['Zonas de Asignación', 'zonas-de-asignacion', 'layers'],
+            ['Lista del personal', 'lista', 'group'], 
+            ['Especializaciones', 'especializacion', 'work'], 
+            ['Otros enlaces', 'enlaces', 'link'],
+        ];
 
         $user = User::findOrFail(Auth::user()->id);
 
@@ -38,7 +46,9 @@ class HomeController extends Controller
 
         $tickets_open = Ticket::where('closed', 0)->count();
 
-        return view('home')->with('links', $links)->with('tickets', $tickets)->with('tickets_open', $tickets_open);
+        $posts = Post::orderBy('created_at', 'desc')->take(4)->get();
+
+        return view('home')->with('links', $links)->with('tickets', $tickets)->with('tickets_open', $tickets_open)->with('posts', $posts);
     }
 
     public function about() {
