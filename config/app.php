@@ -18,7 +18,7 @@ return [
     /*
     | VERSION
     */
-    'version' => '1.3',
+    'version' => '1.5',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,7 +177,7 @@ return [
         Invisnik\LaravelSteamAuth\SteamServiceProvider::class,
         Backpack\Base\BaseServiceProvider::class,
         Backpack\CRUD\CrudServiceProvider::class,
-        Cviebrock\EloquentSluggable\ServiceProvider::class, 
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
         Backpack\PageManager\PageManagerServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         AltThree\Emoji\EmojiServiceProvider::class,
