@@ -12,7 +12,14 @@
     		<div class="col s12 l6">
     		</div>
     	</div>
-        <div class="card-panel">
+
+      <div class="card-panel" id="freq_warning">
+        <span class="flow-text">Solo para agentes de servicio</span>
+        <p>Las frecuencias son solo para aquellos que estén de servicio.</p>
+        <button class="btn blue" id="freq_warning_button">Mostrar</button>
+      </div>
+
+        <div class="card-panel hidden" id="frecuencias" style="display:none">
               <table class="highlight">
 		        <thead>
 		          <tr>
@@ -40,7 +47,7 @@
 		      	</form>
         		@endcan
 		      </div>
-				
+
 
 
 				<br>
@@ -49,7 +56,7 @@
 					<p>Utiliza esta contraseña para acceder a los canales privados de la Policía cuando estés fuera de servicio:</p>
 
 					<span class="spoiler">{{ Config::get('settings.ts_password') }}</span>
-				@can('admin')	
+				@can('admin')
 				<span class="right">
 				<a href="/admin/setting/1/edit" class="btn black white-text waves-effect waves-light"><i class="material-icons left">developer_mode</i> Editar</a>
 				</span>
@@ -57,9 +64,21 @@
 				@endcan
 				</div>
 
-				
+
 
     </div>
 </div>
 
+@endsection
+
+@section('footer')
+  <script>
+  $('#freq_warning_button').on('click', function(e) {
+    $('#freq_warning_button').addClass('disabled');
+    setTimeout(function() {
+      $('#freq_warning').hide();
+      $('#frecuencias').show();
+    }, 1000);
+  });
+  </script>
 @endsection
