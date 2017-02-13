@@ -14,9 +14,9 @@
     	</div>
 
       <div class="card-panel" id="freq_warning">
-        <span class="flow-text">{{ trans('frequencies_online_confirm_title') }}</span>
-        <p>{{ trans('frequencies_online_confirm_body') }}</p>
-        <button class="btn blue waves-effect" id="freq_warning_button">{{ trans('frequencies_online_confirm_button') }}</button>
+        <span class="flow-text">{{ trans('messages.frequencies_online_confirm_title') }}</span>
+        <p>{{ trans('messages.frequencies_online_confirm_body') }}</p>
+        <button class="btn blue waves-effect" id="freq_warning_button">{{ trans('messages.frequencies_online_confirm_button') }}</button>
       </div>
 
         <div class="card-panel hidden" id="frecuencias" style="display:none">
@@ -51,14 +51,14 @@
 
 
 				<br>
-				<span class="flow-text">Contraseña canales TeamSpeak</span>
+				<span class="flow-text">{{ trans('messages.frequencies_teamspeak_title') }}</span>
 				<div class="card-panel">
-					<p>Utiliza esta contraseña para acceder a los canales privados de la Policía cuando estés fuera de servicio:</p>
+					<p>{{ trans('messages.frequencies_teamspeak_body') }}</p>
 
 					<span class="spoiler">{{ Config::get('settings.ts_password') }}</span>
 				@can('admin')
 				<span class="right">
-				<a href="/admin/setting/1/edit" class="btn black white-text waves-effect waves-light"><i class="material-icons left">developer_mode</i> Editar</a>
+				<a href="/admin/setting/1/edit" class="btn black white-text waves-effect waves-light"><i class="material-icons left">developer_mode</i> {{ trans('messages.frequencies_teamspeak_admin_edit') }}</a>
 				</span>
 				<br><br>
 				@endcan

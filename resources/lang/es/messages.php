@@ -75,6 +75,10 @@ return [
 	'frequencies_online_confirm_title' => 'Solo para agentes de servicio',
 	'frequencies_online_confirm_body' => 'Las frecuencias son solo para aquellos que estén de servicio.',
 	'frequencies_online_confirm_button' => 'Mostrar',
+	'frequencies_teamspeak_title' => 'Contraseña canales de TeamSpeak',
+	'frequencies_teamspeak_body' => 'Utiliza la siguiente contraseña para acceder a los canales de la Policía cuando estés fuera de servicio:',
+	'frequencies_teamspeak_admin_edit' => 'Editar',
+
 
 	// Perfil (users.profile)
 	'profile_member_since' => 'policía desde :ago',
