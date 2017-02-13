@@ -16,7 +16,7 @@
       <div class="card-panel" id="freq_warning">
         <span class="flow-text">Solo para agentes de servicio</span>
         <p>Las frecuencias son solo para aquellos que estén de servicio.</p>
-        <button class="btn blue" id="freq_warning_button">Mostrar</button>
+        <button class="btn blue waves-effect" id="freq_warning_button">Mostrar</button>
       </div>
 
         <div class="card-panel hidden" id="frecuencias" style="display:none">
@@ -43,7 +43,7 @@
 		      {!! trans('messages.frequencies_regenerate_subtitle') !!}
 		      	<form action="{{ route('frequencies_new') }}" method="POST" onsubmit="return confirm('{{ trans('messages.frequencies_regenerate_confirm') }}');">
 		      	{{ csrf_field() }}
-		      	<button class="btn">{{ trans('messages.frequencies_regenerate_button') }}</button>
+		      	<button class="btn waves-effect waves-light black">{{ trans('messages.frequencies_regenerate_button') }}</button>
 		      	</form>
         		@endcan
 		      </div>
