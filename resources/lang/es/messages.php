@@ -41,6 +41,7 @@ return [
 	'list_specialties' => 'Especialidades',
 	'list_total' => ':num en total',
 	'list_last_update' => 'última actualización :ago',
+	'list_search_placeholder' => 'Buscar persona...',
 
 	// Especializaciones (specialties.list)
 	'specialties_title' => 'Especializaciones',
