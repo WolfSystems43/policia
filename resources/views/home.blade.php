@@ -9,13 +9,13 @@
         <div class="row">
 
             <div class="col s12 m4">
-               <p>Enlaces rápidos</p>
+               <p>{{ trans('messages.home_links_title') }}</p>
                <div class="row">
                 @foreach($links as $link)
                     <div class="col s12">
                         <a href="{{ url($link[1]) }}">
                             <div class="card-panel hoverable truncate">
-                                <i class="left material-icons">{{ $link[2] }}</i> {{ $link[0] }}    
+                                <i class="left material-icons">{{ $link[2] }}</i> {{ $link[0] }}
                             </div>
                         </a>
                     </div>
@@ -24,32 +24,32 @@
             </div>
 
             <div class="col s12 m8">
-                <p>Comunicados internos</p>
+                <p>{{ trans('messages.home_posts_title') }}</p>
                 <div class="row">
-                    <div class="col s12">  
+                    <div class="col s12">
                         @foreach($posts as $post)
 
                         @if ($loop->first)
                             <div class="card-panel @if($post->isNew()) new-indicator @endif ">
-                                <span><b><a href="{{ route('post', ['id' => $post->id]) }}">{{ $post->title }}</a></b> <small>- {{ $post->getCreatedDiff() }}</small> 
+                                <span><b><a href="{{ route('post', ['id' => $post->id]) }}">{{ $post->title }}</a></b> <small>- {{ $post->getCreatedDiff() }}</small>
 
                                 @if($post->isNew())  <span class="new badge blue" data-badge-caption="">Nuevo</span> @endif
                                 </span>
-                                
+
                                 <?php echo GrahamCampbell\Markdown\Facades\Markdown::convertToHtml($post->content); ?>
                             </div>
                         @else
                             <div class="card-panel">
                                 <p>
                                 <a href="{{ route('post', ['id' => $post->id]) }}">{{ $post->title }}</a> <small>- {{ $post->getCreatedDiff() }}</small>
-                                @if($post->isNew())  <span class="new badge blue" data-badge-caption="">Nuevo</span> @endif
+                                @if($post->isNew())  <span class="new badge blue" data-badge-caption="">{{ trans('home_posts_new') }}</span> @endif
                                 </p>
                             </div>
                         @endif
 
                         @endforeach
 
-                        <span class="right"><a href="{{ route('posts') }}">ver más comunicados</a></span>
+                        <span class="right"><a href="{{ route('posts') }}">{{ trans('messages.home_posts_viewmore') }}</a></span>
                     </div>
                 </div>
 
@@ -59,11 +59,11 @@
         <div class="card-panel">
             <p><a href="{{ route('tickets') }}">{{ trans_choice('messages.home_tickets_waiting_content', $tickets_open, ['num' => $tickets_open]) }}</a></p>
         </div>
-        @endif 
+        @endif
         @endcan
 
         @if($tickets->count() > 0)
-        <p>Tus tickets abiertos</p>
+        <p>{{ trans('messages.home_tickers_open_title') }}</p>
             <ul>
             @foreach($tickets as $ticket)
             <a href="{{ route('ticket', ['id' => $ticket->id]) }}">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col s12 m6">
                         <span>{!! trans_choice('messages.home_tickets_open_replies', $ticket->replies->count(), ['num' => $ticket->replies->count()]) !!}
-                        @if($ticket->replies->count() > 0) 
+                        @if($ticket->replies->count() > 0)
                         ({{ $ticket->getLastReply()->getCreatedDiff() }})</span>
                         @endif
                         <br><span><i class="material-icons tiny">{{ $ticket->getStatus()['icon'] }}</i> {{ $ticket->getStatus()['text'] }}</span>
@@ -90,7 +90,7 @@
 
             </div>
 
-        </div> 
+        </div>
 
 
     </div>

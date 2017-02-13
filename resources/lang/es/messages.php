@@ -28,13 +28,19 @@ return [
 	'home_tickets_waiting_content' => '1 ticket abierto|:num tickets abiertos',
 	'home_tickets_open' => 'Tus tickets abiertos',
 	'home_tickets_open_replies' => '<b>1</b> respuesta|<b>:num</b> respuestas',
+	'home_links_title' => 'Enlaces rápidos',
+	'home_posts_title' => 'Comunicados internos',
+	'home_posts_viewmore' => 'ver más comunicados',
+	'home_posts_new' => 'Nuevo',
+	'home_tickets_open_title' => 'Tus tickets abiertos',
+
 
 	// Lista de personal (users.list)
 	'list_rank' => 'Rango',
 	'list_name' => 'Nombre',
 	'list_specialties' => 'Especialidades',
 	'list_total' => ':num en total',
-	'list_last_update' => 'última actualización :ago', 
+	'list_last_update' => 'última actualización :ago',
 
 	// Especializaciones (specialties.list)
 	'specialties_title' => 'Especializaciones',
@@ -64,7 +70,7 @@ return [
 		      	<li>Las frecuencias se regeneran para ambos servidores</li>
 		      	<li>Para regenerar de cara a un reinicio, debe ser como mínimo menos 5.</li>
 		      </ol>',
-	'frequencies_regenerate_button' => 'Regenerar', 
+	'frequencies_regenerate_button' => 'Regenerar',
 	'frequencies_regenerate_confirm' => '¿Regenerar frecuencias?',
 
 	// Perfil (users.profile)
@@ -90,4 +96,8 @@ return [
       <li>Añade en la lista de personas de las que te quejas a todos aquellos que creas que hicieron algo mal. Explica uno por uno su implicación.</li>
     </ol>
 		<p><b>Toda queja debe estar apoyada por pruebas acordes al nivel de la acusación.</b></p>',
-]; 
+
+		// Detalle de comunicado (posts.view)
+		'post_back' => '<< lista de comunicados',
+		'post_footer' => 'Por <a href=":route">:name</a> :ago',
+];
