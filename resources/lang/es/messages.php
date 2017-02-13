@@ -72,6 +72,9 @@ return [
 		      </ol>',
 	'frequencies_regenerate_button' => 'Regenerar',
 	'frequencies_regenerate_confirm' => '¿Regenerar frecuencias?',
+	'frequencies_online_confirm_title' => 'Solo para agentes de servicio',
+	'frequencies_online_confirm_body' => 'Las frecuencias son solo para aquellos que estén de servicio.',
+	'frequencies_online_confirm_button' => 'Mostrar',
 
 	// Perfil (users.profile)
 	'profile_member_since' => 'policía desde :ago',

@@ -14,9 +14,9 @@
     	</div>
 
       <div class="card-panel" id="freq_warning">
-        <span class="flow-text">Solo para agentes de servicio</span>
-        <p>Las frecuencias son solo para aquellos que estén de servicio.</p>
-        <button class="btn blue waves-effect" id="freq_warning_button">Mostrar</button>
+        <span class="flow-text">{{ trans('frequencies_online_confirm_title') }}</span>
+        <p>{{ trans('frequencies_online_confirm_body') }}</p>
+        <button class="btn blue waves-effect" id="freq_warning_button">{{ trans('frequencies_online_confirm_button') }}</button>
       </div>
 
         <div class="card-panel hidden" id="frecuencias" style="display:none">
