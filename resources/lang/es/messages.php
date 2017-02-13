@@ -92,6 +92,8 @@ return [
 	'profile_admin_edit' => 'Editar',
 
 	// Nueva queja (tickets.new)
+	'newticket_page_title' => 'Nueva queja',
+	'newticket_title' => 'Presentar queja interna',
 	'newticket_persons_label' => 'Personas de las que te quejas',
 	'newticket_subject_label' => 'Asunto',
 	'newticket_subject_placeholder' => 'Algo corto y explicativo',
@@ -104,6 +106,17 @@ return [
       <li>Añade en la lista de personas de las que te quejas a todos aquellos que creas que hicieron algo mal. Explica uno por uno su implicación.</li>
     </ol>
 		<p><b>Toda queja debe estar apoyada por pruebas acordes al nivel de la acusación.</b></p>',
+	'newticket_anonymous_toggle' => 'Mantener el anonimato <small><a href="#:tag">más información</a></small>',
+	'newticket_anonymous_modal_title' => 'Modo anónimo',
+	'newticket_anonymous_modal_body' => '<p>Si seleccionas el modo anónimo, tu nombre no aparecerá en el panel de gestión de quejas internas.</p>
+	<p>Esto está pensado para presentar quejas contra miembros de la jefatura principalmente, aunque también puedes optar por activar el modo anónimo aunque no sean quejas contra gente de rango alto.</p>
+	<p>Aunque actives el modo anónimo, podrás comunicarte si lo deseas a través de esta misma web, siempre manteniendo un riguroso anonimato.</p>
+	<p>Ten en cuenta que, dependiendo de tu forma de escribir, los responsables podrían deducir tu identidad.</p>
+	<p>Una vez activado el anonimato, no podrás desacivarlo en esa misma incidencia.</p>',
+	'newticket_anonymous_modal_warning' => '<b>Aviso:</b> en casos de faltas de respeto o similar los comisarios podrán solicitar a cierto miembro del staff que revele el nombre del denunciante. Se valorará la situación y puede darse el caso de que se comunique.</p>',
+	'newticket_anonymous_modal_close_button' => 'Cerrar',
+	'newticket_send_button' => 'Enviar',
+	'newticket_user_select_placeholder' => 'Introduce uno o varios nombres',
 
 		// Detalle de comunicado (posts.view)
 		'post_back' => '<< lista de comunicados',
