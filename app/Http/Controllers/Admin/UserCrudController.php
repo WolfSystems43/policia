@@ -55,7 +55,7 @@ class UserCrudController extends CrudController
             'name'        => 'corp', // the name of the db column
             'label'       => 'Cuerpo', // the input label
             'type'        => 'radio',
-            'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+            'options'     => [ // the key will be stored in the db, the value will be shown as label;
                                 0 => "Sin cuerpo (a elegir)",
                                 1 => "Cuerpo Nacional de Policía",
                                 2 => "Guardia Civil",
@@ -68,7 +68,7 @@ class UserCrudController extends CrudController
             'name'        => 'rank', // the name of the db column
             'label'       => 'Rango', // the input label
             'type'        => 'radio',
-            'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+            'options'     => [ // the key will be stored in the db, the value will be shown as label;
                                 0 => "Civil (sin rango)",
                                 1 => "Recluta/Cadete (Novato)",
                                 2 => "Agente/Guardia Civil",
@@ -126,10 +126,15 @@ class UserCrudController extends CrudController
         ]);
 
         $this->crud->addColumn([
+           'name' => 'steamid', // The db column name
+           'label' => "SteamID" // Table column heading
+        ]);
+
+        $this->crud->addColumn([
             'name'        => 'corp',
             'label'       => 'Cuerpo',
             'type'        => 'radio',
-            'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+            'options'     => [ // the key will be stored in the db, the value will be shown as label;
                                 0 => "Sin cuerpo (a elegir)",
                                 1 => "Cuerpo Nacional de Policía",
                                 2 => "Guardia Civil",
@@ -141,7 +146,7 @@ class UserCrudController extends CrudController
             'name'        => 'rank',
             'label'       => 'Rango',
             'type'        => 'radio',
-            'options'     => [ // the key will be stored in the db, the value will be shown as label; 
+            'options'     => [ // the key will be stored in the db, the value will be shown as label;
                                 0 => "Civil (sin rango)",
                                 1 => "Recluta/Cadete (Novato)",
                                 2 => "Agente/Guardia Civil",
@@ -172,10 +177,16 @@ class UserCrudController extends CrudController
            'name' => 'shop', // The db column name
            'label' => "Nivel de tienda" // Table column heading
         ]);
-        
+
         $this->crud->addColumn([
            'name' => 'active_at', // The db column name
            'label' => "Último login" // Table column heading
+        ]);
+
+        $this->crud->addColumn([
+           'name' => 'disabled', // The db column name
+           'label' => "Desactivado", // Table column heading
+           'type' => 'check',
         ]);
 
 
@@ -246,23 +257,24 @@ class UserCrudController extends CrudController
           0 => 'Sin cuerpo',
           1 => 'Cuerpo Nacional de Policía',
           2 => 'Guardia Civil',
+          3 => 'Invisibles',
         ], function($value) { // if the filter is active
             $this->crud->addClause('where', 'corp', $value);
         });
-        $this->crud->addFilter([ // add a "simple" filter called Published 
+        $this->crud->addFilter([ // add a "simple" filter called Published
           'type' => 'simple',
           'name' => 'disabled',
           'label'=> 'Desactivados'
-        ], 
+        ],
         false,
         function() { // if the filter is active (the GET parameter "published" exits)
             $this->crud->addClause('where', 'disabled', 1);
         });
-        $this->crud->addFilter([ // add a "simple" filter called Published 
+        $this->crud->addFilter([ // add a "simple" filter called Published
           'type' => 'simple',
           'name' => 'not_disabled',
           'label'=> 'Activos'
-        ], 
+        ],
         false,
         function() { // if the filter is active (the GET parameter "published" exits)
             $this->crud->addClause('where', 'disabled', 0);
