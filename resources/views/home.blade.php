@@ -63,7 +63,7 @@
         @endcan
 
         @if($tickets->count() > 0)
-        <p>{{ trans('messages.home_tickers_open_title') }}</p>
+        <p>{{ trans('messages.home_tickets_open_title') }}</p>
             <ul>
             @foreach($tickets as $ticket)
             <a href="{{ route('ticket', ['id' => $ticket->id]) }}">
