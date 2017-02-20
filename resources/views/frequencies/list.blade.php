@@ -31,8 +31,11 @@
 		        <tbody>
 	            @foreach($frequencies as $freq)
 		          <tr>
-		            <td>{{$freq[0]}}</td>
-		            <td><span class="spoiler">{{$freq[1]}}</span></td>
+		            <td><span class="">{{$freq[0]}}</span></td>
+		            <td> <a title="Copiar" ref="#!" style="cursor: pointer;" class="freq-button freq-copy" data-clipboard-text="{{$freq[1]}}"> <i class="tiny left material-icons" style="padding-left: 8px">content_copy</i>
+		            </a>
+
+		            <span class="spoiler">{{$freq[1]}}</span></td>
 		          </tr>
 	            @endforeach
 		        </tbody>
@@ -72,7 +75,9 @@
 @endsection
 
 @section('footer')
+<script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
   <script>
+  new Clipboard('.freq-copy');
   $('#freq_warning_button').on('click', function(e) {
     $('#freq_warning_button').addClass('disabled');
     setTimeout(function() {
