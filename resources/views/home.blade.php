@@ -33,7 +33,7 @@
                             <div class="card-panel @if($post->isNew()) new-indicator @endif ">
                                 <span><b><a href="{{ route('post', ['id' => $post->id]) }}">{{ $post->title }}</a></b> <small>- {{ $post->getCreatedDiff() }}</small>
 
-                                @if($post->isNew())  <span class="new badge blue" data-badge-caption="">Nuevo</span> @endif
+                                @if($post->isNew())  <span class="new badge blue" data-badge-caption="">{{ trans('messages.home_posts_new') }}</span> @endif
                                 </span>
 
                                 <?php echo GrahamCampbell\Markdown\Facades\Markdown::convertToHtml($post->content); ?>
@@ -42,7 +42,7 @@
                             <div class="card-panel">
                                 <p>
                                 <a href="{{ route('post', ['id' => $post->id]) }}">{{ $post->title }}</a> <small>- {{ $post->getCreatedDiff() }}</small>
-                                @if($post->isNew())  <span class="new badge blue" data-badge-caption="">{{ trans('home_posts_new') }}</span> @endif
+                                @if($post->isNew())  <span class="new badge blue" data-badge-caption="">{{ trans('messages.home_posts_new') }}</span> @endif
                                 </p>
                             </div>
                         @endif
