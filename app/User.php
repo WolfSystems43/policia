@@ -190,7 +190,7 @@ class User extends Authenticatable
                     break;
                 
                 case 11:
-                    return "Comisario Policía Nacional";
+                    return "Comisario";
                     break;
 
                 default:
