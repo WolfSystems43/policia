@@ -33,6 +33,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\LogLastUserActivity::class,
             \App\Http\Middleware\LogOutDisabledUser::class,
             \App\Http\Middleware\CheckAdmin::class,
+            \App\Http\Middleware\LogUserActive::class,
         ],
 
         'api' => [

@@ -35,8 +35,6 @@ class AuthController extends Controller
                 if($user->isDisabled()) {
                     return redirect('/')->with('status', 'Tu cuenta está desactivada.');
                 }
-                $user->active_at = Carbon::now();
-                $user->save();
                 Auth::login($user, true);
                 return redirect('/home'); // redirect to site
             }
