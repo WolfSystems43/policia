@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Gate;
+use Cache;
+
 use App\Frequency;
 
 class FrequencyController extends Controller
@@ -77,6 +79,12 @@ class FrequencyController extends Controller
         $freq = Frequency::orderBy('created_at', 'desc')->first();
         $ems = collect($freq->content)->where(0, 'EMS')->first();
         return $ems[1];
+    }
+
+    public function checkApi() {
+        return Cache::remember('frequency_version', 360, function() {
+            return Frequency::orderBy('created_at', 'desc')->first()->id;
+        });
     }
 
 }

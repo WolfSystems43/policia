@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 
 use Illuminate\Support\Facades\Log;
 
+use Cache;
+
 use App\Frequency;
 
 class RegenerateFrequencies extends Command
@@ -67,5 +69,6 @@ class RegenerateFrequencies extends Command
         $frequency->content = $freq;
         $frequency->user_id = 1;
         $frequency->save();
+        Cache::forget('frequency_version');
     }
 }

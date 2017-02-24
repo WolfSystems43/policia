@@ -13,13 +13,16 @@
     		</div>
     	</div>
 
-      <div class="card-panel" id="freq_warning">
-        <span class="flow-text">{{ trans('messages.frequencies_online_confirm_title') }}</span>
-        <p>{{ trans('messages.frequencies_online_confirm_body') }}</p>
-        <button class="btn blue waves-effect" id="freq_warning_button">{{ trans('messages.frequencies_online_confirm_button') }}</button>
-      </div>
+	    	<div class="card-panel hidden" style="display:none" id="expired">
+	    		<h5>Nuevas frecuencias disponibles</h5>
+	    		<p>Se han generado nuevas frecuencias, por lo que estas han quedado obsoletas.</p>
+	    		<a href="" class="btn blue waves-effect"><i class="material-icons left">refresh</i> Recargar página</a>
+	    	</div>
 
-        <div class="card-panel hidden" id="frecuencias" style="display:none">
+
+        <div class="card-panel" id="frecuencias">
+
+
               <table class="highlight">
 		        <thead>
 		          <tr>
@@ -78,12 +81,28 @@
 <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js"></script>
   <script>
   new Clipboard('.freq-copy');
-  $('#freq_warning_button').on('click', function(e) {
-    $('#freq_warning_button').addClass('disabled');
-    setTimeout(function() {
-      $('#freq_warning').hide();
-      $('#frecuencias').show();
-    }, 1000);
-  });
+
+  var freq_version = {{ $frequency->id }};
+  var freq_expired = false;
+
+  function checkExpired() {
+  	if(! freq_expired) {
+	  $.get('{{ route('api_frequency_check') }}', function(data, status) {
+	  		console.log(data + " " + freq_version);
+	  	if(data > freq_version) {
+	  		$('#freq_warning').hide();
+      		$('#frecuencias').hide();
+	  		$('#expired').fadeIn();
+	  		freq_expired = true;
+	  	}
+	  });
+	}	
+  }
+
+	setInterval(checkExpired, 60000);
+	jQuery(document).ready(function() {
+	  checkExpired();
+	});
+
   </script>
 @endsection
