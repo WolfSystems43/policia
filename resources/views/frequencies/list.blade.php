@@ -88,7 +88,6 @@
   function checkExpired() {
   	if(! freq_expired) {
 	  $.get('{{ route('api_frequency_check') }}', function(data, status) {
-	  		console.log(data + " " + freq_version);
 	  	if(data > freq_version) {
 	  		$('#freq_warning').hide();
       		$('#frecuencias').hide();
