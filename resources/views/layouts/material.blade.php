@@ -50,7 +50,7 @@
           
           {{-- <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a> --}}
           <ul class="left hide-on-med-and-down">
-          <li><a class="waves-effect" href="{{ route('home') }}" class=""> {!! trans('messages.menu_title', ['corp' => Auth::user()->getCorpName()]) !!}</a></li>
+          <li><a class="waves-effect" href="{{ route('home') }}" class=""> <img style="vertical-align:middle; padding-right: 8px" height="30px" src="{{ Auth::user()->getCorpImage() }}"> <span style="vertical-align:middle"> {!! trans('messages.menu_title', ['corp' => Auth::user()->getCorpName()]) !!}</span></a></li>
          </ul>
           <ul class="right hide-on-large">
 
