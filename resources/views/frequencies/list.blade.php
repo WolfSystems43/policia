@@ -9,7 +9,7 @@
     		<div class="col s12 l6">
         		<h5>{{ trans('messages.frequencies_title') }} <small title="{{ trans('messages.frequencies_last_updated_user', ['name' => $frequency->user->name]) }}">
         		<span v-text="someDate | moment 'from'"></span>
-        		{{ $frequency->created_at->hour }}:{{ $frequency->created_at->minute }}
+        		{{ $frequency->created_at->hour }}:{{ $frequency->created_at->minute }}0
         		</small></h5>
     		</div>
     		<div class="col s12 l6">
