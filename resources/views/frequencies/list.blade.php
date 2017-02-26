@@ -7,7 +7,10 @@
     <div class="container">
     	<div class="row">
     		<div class="col s12 l6">
-        		<h5>{{ trans('messages.frequencies_title') }} <small title="{{ trans('messages.frequencies_last_updated_user', ['name' => $frequency->user->name]) }}">{{ $frequency->getLastStatusDiff() }}</small></h5>
+        		<h5>{{ trans('messages.frequencies_title') }} <small title="{{ trans('messages.frequencies_last_updated_user', ['name' => $frequency->user->name]) }}">
+        		<span v-text="someDate | moment 'from'"></span>
+        		{{ $frequency->created_at->hour }}:{{ $frequency->created_at->minute }}
+        		</small></h5>
     		</div>
     		<div class="col s12 l6">
     		</div>
