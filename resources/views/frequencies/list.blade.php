@@ -102,9 +102,6 @@
   }
 
 	setInterval(checkExpired, 60000);
-	jQuery(document).ready(function() {
-	  checkExpired();
-	});
 
   </script>
 @endsection
