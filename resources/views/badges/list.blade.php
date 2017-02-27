@@ -1,5 +1,7 @@
 @extends('layouts.material')
 
+@section('title', 'Condecoraciones')
+
 @section('content')
 <div class="container">
 	<br>
