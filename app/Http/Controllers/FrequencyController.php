@@ -82,9 +82,7 @@ class FrequencyController extends Controller
     }
 
     public function checkApi() {
-        return Cache::remember('frequency_version', 360, function() {
-            return Frequency::orderBy('created_at', 'desc')->first()->id;
-        });
+        return Frequency::orderBy('created_at', 'desc')->first()->id;
     }
 
 }
