@@ -85,6 +85,7 @@ Route::group(['prefix' => 'tickets'], function() {
 
 Route::group(['prefix' => 'condecoraciones'], function() {
 	Route::get('/', 'BadgeController@listBadges')->name('badges');
+	Route::get('/{id}', 'BadgeController@viewBadge')->name('badge');
 });
 
 Route::group(['prefix' => 'api'], function() {
