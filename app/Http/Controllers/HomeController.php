@@ -36,7 +36,7 @@ class HomeController extends Controller
             ['Normativa', 'normativa-interna', 'class'], 
             ['Zonas de Asignación', 'zonas-de-asignacion', 'layers'],
             ['Lista del personal', 'lista', 'group'], 
-            ['Especializaciones', 'especializacion', 'work'], 
+            ['Calendario', 'calendario', 'event'], 
             ['Otros enlaces', 'enlaces', 'link'],
         ];
 
