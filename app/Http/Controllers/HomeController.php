@@ -37,7 +37,8 @@ class HomeController extends Controller
             ['Zonas de Asignación', 'zonas-de-asignacion', 'layers'],
             ['Lista del personal', 'lista', 'group'], 
             ['Especializaciones', 'especializacion', 'work'], 
-            ['Otros enlaces', 'enlaces', 'link'],
+            ['Otros enlaces', 'enlaces', 'link'], 
+            ['Condecoraciones', 'condecoraciones', 'card_giftcard'],
         ];
 
         $user = User::findOrFail(Auth::user()->id);
