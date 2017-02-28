@@ -19,7 +19,7 @@
 			</div>
 			<div class="col s8 m9 l10 black-text">
 			<b><a href="{{ route('badge', ['id' => $badge->id]) }}">{{ $badge->name }}</a></b>
-			<br><span>0 concedidas</span>
+			<br><span>{{ $badge->grants->count() }} concedidas</span>
 			</div>
 		</div>
 	@endforeach
@@ -37,7 +37,7 @@
 				</div>
 				<div class="col s8 m9 l10 black-text">
 				<b><a href="{{ route('badge', ['id' => $licence->id]) }}">{{ $licence->name }}</a></b>
-				<br><span>0 concedidos</span>
+				<br><span>{{ $licence->grants->count() }} concedidos</span>
 				</div>
 			</div>
 		@endforeach	
@@ -55,7 +55,7 @@
 				</div>
 				<div class="col s8 m9 l10 black-text">
 				<b><a href="{{ route('badge', ['id' => $certificate->id]) }}">{{ $certificate->name }}</a></b>
-				<br><span>0 concedidos</span>
+				<br><span>{{ $certificate->grants->count() }} concedidos</span>
 				</div>
 			</div>
 		@endforeach	

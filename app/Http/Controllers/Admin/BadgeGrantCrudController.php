@@ -8,7 +8,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\BadgeRequest as StoreRequest;
 use App\Http\Requests\BadgeRequest as UpdateRequest;
 
-class BadgeCrudController extends CrudController
+class BadgeGrantCrudController extends CrudController
 {
 
     public function setUp()
@@ -19,9 +19,9 @@ class BadgeCrudController extends CrudController
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
-        $this->crud->setModel("App\Badge");
-        $this->crud->setRoute("admin/badge");
-        $this->crud->setEntityNameStrings('badge', 'badges');
+        $this->crud->setModel("App\BadgeGrant");
+        $this->crud->setRoute("admin/badgegrant");
+        $this->crud->setEntityNameStrings('badgegrant', 'badgegrants');
 
         /*
 		|--------------------------------------------------------------------------
@@ -32,54 +32,45 @@ class BadgeCrudController extends CrudController
         // $this->crud->setFromDb();
 
 
-        // $this->crud->setColumns(['name', 'level']);
 
-        $this->crud->addField([
-            'name' => 'name',
-            'label' => "Nombre"
-            ]);
+        $this->crud->addField(
+        [  // Select2
+           'label' => "Condecoración",
+           'type' => 'select2',
+           'name' => 'badge_id', // the db column for the foreign key
+           'entity' => 'badge', // the method that defines the relationship in your Model
+           'attribute' => 'name', // foreign key attribute that is shown to user
+           'model' => "App\Badge" // foreign key model
+        ]);
+
+        $this->crud->addField(
+        [  // Select2
+           'label' => "Usuario receptor",
+           'type' => 'select2',
+           'name' => 'user_id', // the db column for the foreign key
+           'entity' => 'user', // the method that defines the relationship in your Model
+           'attribute' => 'name', // foreign key attribute that is shown to user
+           'model' => "App\User" // foreign key model
+        ]);
+
+        $this->crud->addField(
+        [  // Select2
+           'label' => "Usuario emisor",
+           'type' => 'select2',
+           'name' => 'author_id', // the db column for the foreign key
+           'entity' => 'author', // the method that defines the relationship in your Model
+           'attribute' => 'name', // foreign key attribute that is shown to user
+           'model' => "App\User" // foreign key model
+        ]);
 
         $this->crud->addField(
         [   // SimpleMDE
-            'name' => 'description',
-            'label' => 'Descripción',
+            'name' => 'message',
+            'label' => 'Mensaje',
             'type' => 'simplemde'
         ]);        
 
-        $this->crud->addField(
-        [
-            'name'        => 'type', // the name of the db column
-            'label'       => 'Tipo', // the input label
-            'type'        => 'radio',
-            'options'     => [ // the key will be stored in the db, the value will be shown as label; 
-                                0 => "Medalla",
-                                1 => "Diploma",
-                                2 => 'Licencia',
-                            ],
-            // optional
-            //'inline'      => false, // show the radios all on the same line?
-        ]);
 
-        $this->crud->addField([ // image
-            'label' => "Imagen",
-            'name' => "image",
-            'type' => 'image',
-            'upload' => true,
-            'crop' => false, // set to true to allow cropping, false to disable
-            'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
-        ]);
-
-        $this->crud->addField([
-            'name' => 'level',
-            'label' => "Nivel"
-            ]);
-
-        $this->crud->addField(
-        [   // Checkbox
-            'name' => 'visible',
-            'label' => 'Visible',
-            'type' => 'checkbox'
-        ]);
 
 
         // ------ CRUD FIELDS
@@ -89,28 +80,43 @@ class BadgeCrudController extends CrudController
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+        $this->crud->addColumn(        
+            [
+           // 1-n relationship
+           'label' => "Medalla", // Table column heading
+           'type' => "select",
+           'name' => 'badge_id', // the column that contains the ID of that connected entity;
+           'entity' => 'badge', // the method that defines the relationship in your Model
+           'attribute' => "name", // foreign key attribute that is shown to user
+           'model' => "App\Badge", // foreign key model
+        ]);
 
-        $this->crud->addColumn([
-           'name' => 'name', // The db column name
-           'label' => "Nombre" // Table column heading
+        $this->crud->addColumn(        
+            [
+           // 1-n relationship
+           'label' => "Usuario", // Table column heading
+           'type' => "select",
+           'name' => 'user_id', // the column that contains the ID of that connected entity;
+           'entity' => 'user', // the method that defines the relationship in your Model
+           'attribute' => "name", // foreign key attribute that is shown to user
+           'model' => "App\User", // foreign key model
+        ]);
+
+        $this->crud->addColumn(        
+            [
+           // 1-n relationship
+           'label' => "Autor", // Table column heading
+           'type' => "select",
+           'name' => 'author_id', // the column that contains the ID of that connected entity;
+           'entity' => 'author', // the method that defines the relationship in your Model
+           'attribute' => "name", // foreign key attribute that is shown to user
+           'model' => "App\User", // foreign key model
         ]);
 
         $this->crud->addColumn([
-            'name'        => 'type',
-            'label'       => 'Tipo',
-            'type'        => 'radio',
-            'options'     => [ // the key will be stored in the db, the value will be shown as label; 
-                                0 => "Medalla",
-                                1 => "Diploma",
-                                2 => 'Licencia',
-                            ],
+           'name' => 'created_at', // The db column name
+           'label' => "Creado" // Table column heading
         ]);
-
-        $this->crud->addColumn([
-           'name' => 'level', // The db column name
-           'label' => "Nivel" // Table column heading
-        ]);
-
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -128,7 +134,7 @@ class BadgeCrudController extends CrudController
 
         // ------ CRUD ACCESS
         // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
-        $this->crud->denyAccess(['create', 'reorder', 'delete']);
+        // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
 
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);

@@ -21,9 +21,13 @@
 				</div>
 				
 				<br>
-				<p>Personas</p>
+				<p>Concesiones</p>
 				<div class="card-panel">
-					<p>Ayy</p>
+					@foreach($badge->grants as $grant)
+					  <div class="chip">
+					    <a href="{{ route('user_profile', ['id' => $grant->user->id]) }}">{{ $grant->user->name }}</a>
+					  </div>
+					@endforeach
 				</div>
 
 			</div>
@@ -39,9 +43,13 @@
 		</div>
 		
 		<br>
-		<p>Personas</p>
+		<p>Concesiones</p>
 		<div class="card-panel">
-			<p>Ayy</p>
+			@foreach($badge->grants as $grant)
+			  <div class="chip">
+			    <a href="{{ route('user_profile', ['id' => $grant->user->id]) }}">{{ $grant->user->name }}</a>
+			  </div>
+			@endforeach
 		</div>
 	@endif
 

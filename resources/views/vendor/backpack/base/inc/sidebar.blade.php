@@ -25,7 +25,8 @@
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/specialty') }}"><i class="fa fa-book"></i> <span>Especialidades</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/post') }}"><i class="fa fa-file"></i> <span>Comunicados</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Páginas</span></a></li>
-          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/badge') }}"><i class="fa fa-cog"></i> <span>Condecoraciones</span></a></li>
+          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/badge') }}"><i class="fa fa-certificate"></i> <span>Condecoraciones</span></a></li>
+          <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/badgegrant') }}"><i class="fa fa-id-card"></i> <span>Concesiones</span></a></li>
           <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/setting') }}"><i class="fa fa-cog"></i> <span>Ajustes</span></a></li>
 
           <!-- ======================================= -->

@@ -8,6 +8,12 @@ class Badge extends Model
 {
     use \Backpack\CRUD\CrudTrait, \Venturecraft\Revisionable\RevisionableTrait;
 
+
+    public function grants() {
+        return $this->hasMany('App\BadgeGrant');
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

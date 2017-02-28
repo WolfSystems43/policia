@@ -59,6 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin_only', 'auth']], func
 	CRUD::resource('specialty', 'Admin\SpecialtyCrudController');
 	CRUD::resource('post', 'Admin\PostCrudController');
 	CRUD::resource('badge', 'Admin\BadgeCrudController');
+	CRUD::resource('badgegrant', 'Admin\BadgeGrantCrudController');
 });
 
 Route::group(['prefix' => 'especializacion'], function() {
