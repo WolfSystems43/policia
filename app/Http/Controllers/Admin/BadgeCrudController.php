@@ -128,7 +128,7 @@ class BadgeCrudController extends CrudController
 
         // ------ CRUD ACCESS
         // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
-        $this->crud->denyAccess(['create', 'reorder', 'delete']);
+        $this->crud->denyAccess(['reorder', 'delete']);
 
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);
