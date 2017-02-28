@@ -71,8 +71,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Reply');
     }
 
-    public function badges() {
-        return $this->hasManyThrough('App\BadgeGrant', 'App\Badge');
+    public function grants() {
+        return $this->hasMany('App\BadgeGrant');
     }
 
     /**
