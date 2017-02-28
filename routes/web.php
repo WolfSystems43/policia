@@ -58,6 +58,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin_only', 'auth']], func
 	CRUD::resource('user', 'Admin\UserCrudController');
 	CRUD::resource('specialty', 'Admin\SpecialtyCrudController');
 	CRUD::resource('post', 'Admin\PostCrudController');
+	CRUD::resource('badge', 'Admin\BadgeCrudController');
+	CRUD::resource('badgegrant', 'Admin\BadgeGrantCrudController');
 });
 
 Route::group(['prefix' => 'especializacion'], function() {
@@ -80,6 +82,11 @@ Route::group(['prefix' => 'tickets'], function() {
 	Route::get('/', 'TicketController@listTickets')->name('tickets');
 	Route::get('/cerrados', 'TicketController@listClosedTickets')->name('tickets_closed');
 	Route::get('/mios', 'TicketController@listUserTickets')->name('my_tickets');
+});
+
+Route::group(['prefix' => 'condecoraciones'], function() {
+	Route::get('/', 'BadgeController@listBadges')->name('badges');
+	Route::get('/{id}', 'BadgeController@viewBadge')->name('badge');
 });
 
 Route::group(['prefix' => 'api'], function() {

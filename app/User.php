@@ -71,6 +71,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Reply');
     }
 
+    public function grants() {
+        return $this->hasMany('App\BadgeGrant');
+    }
+
     /**
      * Scope a query to only include active users.
      *
