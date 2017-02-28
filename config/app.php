@@ -183,6 +183,7 @@ return [
         AltThree\Emoji\EmojiServiceProvider::class,
         Backpack\Settings\SettingsServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
+        Spatie\Tail\TailServiceProvider::class,
 
 
         /*

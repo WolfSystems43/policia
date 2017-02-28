@@ -15,7 +15,8 @@
         "graham-campbell/markdown": "^7.1",
         "invisnik/laravel-steam-auth": "2.*",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "spatie/laravel-tail": "^1.2"
     },
     "require-dev": {
         "backpack/generators": "^1.1",

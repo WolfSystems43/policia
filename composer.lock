@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff95808a81555c58372a90f8a70ecd6f",
+    "content-hash": "7eb6cee34b77364a1067a7ca01fcf7cd",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -2717,6 +2717,53 @@
                 "uuid"
             ],
             "time": "2016-11-22T19:21:44+00:00"
+        },
+        {
+            "name": "spatie/laravel-tail",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-tail.git",
+                "reference": "472c21f1f30b4ddc16b643abb860cb0b9ae70c42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-tail/zipball/472c21f1f30b4ddc16b643abb860cb0b9ae70c42",
+                "reference": "472c21f1f30b4ddc16b643abb860cb0b9ae70c42",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.4.0",
+                "illuminate/support": "~5.4.0",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Tail\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://murze.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easily tail the application log in Laravel applications",
+            "homepage": "https://github.com/spatie/laravel-tail",
+            "keywords": [
+                "laravel 5",
+                "laravel-tail",
+                "log",
+                "tail"
+            ],
+            "time": "2017-01-20T08:30:31+00:00"
         },
         {
             "name": "studio-42/elfinder",
