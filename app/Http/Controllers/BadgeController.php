@@ -8,6 +8,17 @@ use App\Badge;
 
 class BadgeController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function listBadges() {
     	$badges = Badge::where('type', 0)->where('visible', 1)->get();
     	$certificates = Badge::where('type', 1)->where('visible', 1)->get();
