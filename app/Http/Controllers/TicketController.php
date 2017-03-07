@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 
 use Auth;
 use Gate;
+use Mail;
+
 
 use Carbon\Carbon;
 
 use App\Ticket;
 use App\User;
 use App\Reply;
+use App\Specialty;
+use App\Mail\RepliedTicket;
+use App\Mail\TicketCreated;
 
 class TicketController extends Controller
 {
@@ -71,6 +76,34 @@ class TicketController extends Controller
     	Auth::user()->tickets()->save($ticket);
     	$ticket->usersInvolved()->attach($implicated);
         
+        // Mail logic
+
+        // Send mail to Admins if they have notifications enabled
+        foreach (User::all()->where('admin', 1) as $user) {
+            if($user->emailEnabled()) {
+                if($user->validEmail()) {
+                    Mail::to($user)->send(new TicketCreated($ticket));   
+                }
+            }
+        }
+
+        // Send mail to IA boss if exists
+
+        $iABoss = null;
+
+        if(!is_null(Specialty::find(6))) {
+            $iABoss = Specialty::find(6)->user;
+        }
+        
+        if (!is_null($iABoss)) {
+            if ($iABoss->emailEnabled() && ! $iABoss->isAdmin()) {
+                if($iABoss->validEmail()) {
+                    Mail::to($iABoss)->send(new TicketCreated($ticket));   
+                }
+            }
+        }
+
+
         return redirect(route('ticket', ['id' => $ticket->id]));
     }
 
@@ -117,6 +150,13 @@ class TicketController extends Controller
 
         $reply->user_id = Auth::user()->id;
         $ticket->replies()->save($reply);
+
+        if($ticket->user != $user) {
+            if($ticket->user->validEmail()) {
+                Mail::to($ticket->user)->send(new RepliedTicket($reply));   
+            }
+            
+        }
 
         return redirect(route('ticket', ['id' => $ticket->id]));
     }

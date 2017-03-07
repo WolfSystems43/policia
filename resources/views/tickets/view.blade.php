@@ -64,7 +64,7 @@
 	<h5>Respuestas</h5>
 	@foreach($ticket->replies as $reply)
 		<br>
-		<p>
+		<p id="reply-{{ $reply->id }}">
 		@if($reply->staff)
 			@if(Auth::user()->isIA())
 				<img height="16" src="/img/divisas/especialidades/6.png"> <b>Asuntos Internos</b> (<i>{{ $reply->user->name }}</i>)
