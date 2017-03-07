@@ -89,52 +89,26 @@
       <a href="{{ route('home') }}" class="btn btn-block {{ Auth::user()->getColor() }} ">{{ trans('messages.menu_mobile_home') }}</a>
     </div>
     
-      @if (session('status'))
-      <br>
-      <div class="container">
-              <div class="card-panel">
-                <p>{{ session('status') }}</p>
-              </div>
-      </div>
 
+      
+      {{-- If the user doesn't have a valid email --}}
+      @if(! Auth::user()->hasMail() && ! isset($unlock_page)) 
+        {{-- TODO show welcome screen --}}
+        @include('common.welcome')
+      @else {{-- If the user HAS an email set --}}
+        {{-- Check if is verified --}}
+        @if(! Auth::user()->isVerified())
+          {{-- If NOT verified, show options --}}
+          @include('common.verify')
+        @else
+          {{-- User is good to go, verified --}}
+          @yield('content')
+        @endif
+        {{-- Include the content --}}
       @endif
-    @if(!Auth::user()->hasMail() && !isset($unlock_page))
-          @if (count($errors) > 0)
-          <div class="container">
-            <div class="card-panel red darken-2 white-text">
-              <ul>
-              @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-                  </ul>
-            </div>
-          </div>
-      @endif
-      <div class="container">
-        <div class="card-panel">
-          <span class="flow-text"><i class="material-icons">contact_mail</i> Añade tu correo</span>
-          <p>{!! trans('messages.mail_subtitle') !!}</p>
-          <form method="post" action="{{ route('email-settings') }}">
-          {{ csrf_field() }}
-              <div class="row">
-                <div class="input-field col s12">
-                  <input type="email" placeholder="ejemplo@ejemplo.com" name="email" required="required">
-                  <label for="email">{{ trans('messages.mail_label') }}</label>
-                </div>
-                <div class="input-field col s12">
-                  <input type="email" name="email_confirmation" required="required">
-                  <label for="email_confirmation">{{ trans('messages.mail_label_confirmation') }}</label>
-                </div>
-              </div>
-              <button class="btn green waves-effect">{{ trans('messages.mail_save') }}</button>
-          </form>
-        </div>
-      </div>
-    @else
-      @yield('content')
-    @endif
+      {{-- END mail --}}
 
-
+    
       {{-- <div class="container">
         <span class="right"><a class="grey-rext" href="{{ route('about') }}">Por Manolo Pérez</a></span>
       </div> --}}
@@ -161,6 +135,13 @@
         ga('send', 'pageview');
 
       </script>
+      @if (session('status'))
+        <script>
+            Materialize.toast('{{ session('status') }}', 4000)
+        </script>
+      @endif
+
+
 
       @yield('footer')
     </body>

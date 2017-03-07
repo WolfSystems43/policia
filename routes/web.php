@@ -32,6 +32,7 @@ Route::group(['prefix' => 'ajustes'], function() {
 	Route::get('/', 'SettingsController@settings')->name('settings');
 	Route::post('/', 'SettingsController@saveSettings');
 	Route::post('/correo', 'SettingsController@emailSettings')->name('email-settings');
+	Route::post('/correo/verificar', 'SettingsController@verifyEmail')->name('email-verify');
 });
 
 
