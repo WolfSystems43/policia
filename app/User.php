@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'steamid', 'corp', 'rank', 'disabled', 'profile', 'shop', 'shop_reason', 'email'
+        'name', 'steamid', 'corp', 'rank', 'disabled', 'profile', 'shop', 'shop_reason', 'email', 'email_verified'
     ];
 
     /**
@@ -33,7 +33,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'email_code'
     ];
 
     /**
@@ -44,7 +44,7 @@ class User extends Authenticatable
     protected $dates = ['active_at'];
 
     protected $dontKeepRevisionOf = array(
-        'active_at', 'remember_token', 'password'
+        'active_at', 'remember_token', 'password', 'email_code', 'email_enabled'
     );
 
     public function specialties() {
@@ -334,5 +334,30 @@ class User extends Authenticatable
 
         Carbon::setLocale('es');
         return $dt->diffForHumans();
+    }
+
+    public function isVerified() {
+        if(is_null($this->email)) {
+            $this->email_verified = false;
+        }
+        return $this->email_verified;
+    }
+
+    public function emailEnabled() {
+        return $this->email_enabled;
+    }
+
+    public function validEmail(){ 
+        return filter_var($this->email, FILTER_VALIDATE_EMAIL) !== false;
+    }
+
+    public function emailCode() {
+        if(is_null($this->email_code)) {
+            $this->email_code = rand(100001, 999999);
+            $this->save();
+            return $this->email_code;
+        } else {
+            return $this->email_code;
+        }
     }
 }
