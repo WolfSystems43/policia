@@ -53,7 +53,9 @@
           <li><a class="waves-effect" href="{{ route('home') }}" class=""> <img style="vertical-align:middle; padding-right: 8px" height="30px" src="{{ Auth::user()->getCorpImage() }}"> <span style="vertical-align:middle"> {!! trans('messages.menu_title', ['corp' => Auth::user()->getCorpName()]) !!}</span></a></li>
          </ul>
           <ul class="right hide-on-large">
-
+          @if(env('APP_DEBUG'))
+            <li><a title="Modo de desarrollador"><i class="yellow-text text-accent-1 material-icons">bug_report</i></a></li>
+          @endif
            <li><a class="dropdown-button" href="#!" class="" data-activates="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
