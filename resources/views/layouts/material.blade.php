@@ -89,6 +89,14 @@
       <a href="{{ route('home') }}" class="btn btn-block {{ Auth::user()->getColor() }} ">{{ trans('messages.menu_mobile_home') }}</a>
     </div>
     
+      @if(!is_null(Config::get('settings.message')) && Config::get('settings.message') != "")
+      <div class="container">
+      <p><i class="material-icons left">warning</i> Mensaje del sistema</p>
+        <div class="card-panel">
+          {{ Config::get('settings.message') }}
+        </div>
+      </div>
+      @endif
 
       
       {{-- If the user doesn't have a valid email --}}
