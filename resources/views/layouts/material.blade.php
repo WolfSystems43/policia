@@ -10,8 +10,6 @@
 
       <link rel="stylesheet" href="/css/material.css">
       @if(session('dark', false))
-
-
         <link rel="stylesheet" href="/css/material-dark.css">
       @endif
 
