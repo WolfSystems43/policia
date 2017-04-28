@@ -311,7 +311,7 @@ class User extends Authenticatable
         if(is_null(\App\Specialty::find(6))) {
             return false;
         }
-        return \App\Specialty::find(6)->user == $this || $this->isAdmin();
+        return \App\Specialty::find(6)->users()->where('id', $this->id)->count() > 0 || $this->isAdmin();
     }
 
     public function hasMail() {
