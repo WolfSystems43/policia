@@ -63,8 +63,8 @@
 	        <tbody>
 	        @foreach($specialty->users()->orderBy('name', 'asc')->get() as $user)
 	          <tr>
-	            <td><img height="24" class="left" src="{{ $user->getCorpImage() }}" alt=" Insignia {{ $user->getCorpName() }}"> {{ $user->getCorpName() }}</td>
-	            <td> <img height="24" class="left" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
+	            <td><img height="24" class="left list-img" src="{{ $user->getCorpImage() }}" alt=" Insignia {{ $user->getCorpName() }}"> {{ $user->getCorpName() }}</td>
+	            <td> <img height="24" class="left list-img" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
 				@if($user->rank >= 9)
 	             <b>{{ $user->getRankName() }}</b>
 	            @elseif($user->rank <= 1)

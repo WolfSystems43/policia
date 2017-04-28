@@ -44,7 +44,7 @@
         <tbody>
         @foreach($cnp as $user)
               <tr>
-                <td> <img class="left" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
+                <td> <img class="left list-img" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
     			@if($user->rank >= 9)
                  <b>{{ $user->getRankName() }}</b>
                 @elseif($user->rank <= 1)
@@ -95,7 +95,7 @@
         <tbody>
         @foreach($gc as $user)
               <tr>
-                <td> <img class="left" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
+                <td> <img class="left list-img" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
           @if($user->rank >= 9)
                  <b>{{ $user->getRankName() }}</b>
                 @elseif($user->rank <= 1)
@@ -148,7 +148,7 @@
         <tbody>
         @foreach($cadetes as $user)
               <tr>
-                <td> <img class="left" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
+                <td> <img class="left list-img" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
           @if($user->rank >= 9)
                  <b>{{ $user->getRankName() }}</b>
                 @elseif($user->rank <= 1)

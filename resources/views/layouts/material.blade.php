@@ -35,6 +35,13 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+      <style>
+        .list-img {
+          padding-right: 8px;
+        }
+      </style>
     </head>
 
     <body>
