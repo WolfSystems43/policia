@@ -32,6 +32,7 @@
       <meta name="msapplication-TileColor" content="#ffffff">
       <meta name="msapplication-TileImage" content="/img/icon//ms-icon-144x144.png">
       <meta name="theme-color" content="#ffffff">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -123,7 +124,7 @@
       @endif
       {{-- END mail --}}
 
-    
+
       {{-- <div class="container">
         <span class="right"><a class="grey-rext" href="{{ route('about') }}">Por Manolo Pérez</a></span>
       </div> --}}

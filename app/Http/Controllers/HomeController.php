@@ -31,7 +31,6 @@ class HomeController extends Controller
     public function index()
     {
         $links = [
-            ['Frecuencias y radio', 'frecuencias', 'settings_input_antenna'], 
             ['Multas y sanciones', 'multas', 'euro_symbol'], 
             ['Normativa', 'normativa-interna', 'class'], 
             ['Zonas de Asignación', 'zonas-de-asignacion', 'layers'],

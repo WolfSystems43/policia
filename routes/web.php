@@ -93,7 +93,15 @@ Route::group(['prefix' => 'condecoraciones'], function() {
 Route::group(['prefix' => 'api'], function() {
 	Route::get('/users/search/input', 'UserController@searchInput')->name('api_user_search_input');
 	Route::get('/frequencies/ems/{key}', 'FrequencyController@emsApi')->name('api_frequency_ems');
-	Route::get('/frequencies/check', 'FrequencyController@checkApi')->name('api_frequency_check');
+    Route::get('/frequencies/check', 'FrequencyController@checkApi')->name('api_frequency_check');
+    Route::get('/session/', 'GameSessionController@sessionApi')->name('api_session');
+    Route::post('/session/kick', 'GameSessionController@sessionApiKick')->name('api_session_kick');
+});
+
+Route::group(['prefix' => 'servicio'], function() {
+    Route::get('/', 'GameSessionController@index')->name('start-work');
+    Route::post('/', 'GameSessionController@startWork');
+    Route::post('/dejar', 'GameSessionController@endWork')->name('work-end');
 });
 
 // DEBUG

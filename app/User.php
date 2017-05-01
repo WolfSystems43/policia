@@ -33,7 +33,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'email_code'
+        'password', 'remember_token', 'email_code',
+        'steamid', 'email', 'disabled', 'admin',
+        'email_enabled', 'email_verified', 'updated_at',
+        'shop', 'profile', 'shop_reason', 'active_at'
+    ];
+
+    protected $appends = [
+      'corp_image', 'corp_name', 'rank_image', 'rank_name'
     ];
 
     /**
@@ -73,6 +80,11 @@ class User extends Authenticatable
 
     public function grants() {
         return $this->hasMany('App\BadgeGrant');
+    }
+
+    public function works()
+    {
+        return $this->hasMany(Work::class);
     }
 
     /**
@@ -117,6 +129,11 @@ class User extends Authenticatable
         }
     }
 
+    public function getCorpNameAttribute()
+    {
+        return $this->getCorpName();
+    }
+
     public function getCorpName() {
                 switch ($this->corp) {
             case 0:
@@ -135,6 +152,11 @@ class User extends Authenticatable
                 return "Sin cuerpo";
                 break;
         }
+    }
+
+    public function getRankNameAttribute()
+    {
+        return $this->getRankName();
     }
 
     public function getRankName() {
@@ -260,6 +282,11 @@ class User extends Authenticatable
         
     }
 
+    public function getRankImageAttribute()
+    {
+        return $this->getRankImage();
+    }
+
     public function getRankImage() {
         if($this->rank == 0) {
             return "/img/divisas/cnpgc.png";
@@ -282,6 +309,11 @@ class User extends Authenticatable
 
         return "/img/divisas/cnpgc.png";
         
+    }
+
+    public function getCorpImageAttribute()
+    {
+        return $this->getCorpImage();
     }
 
     public function getCorpImage() {
@@ -359,5 +391,15 @@ class User extends Authenticatable
         } else {
             return $this->email_code;
         }
+    }
+
+    // Return if the user is currently working
+    public function isWorking() {
+        return $this->works()->whereNull('end_at')->count() > 0;
+    }
+
+    public function getWork()
+    {
+        return $this->works()->whereNull('end_at')->first();
     }
 }
