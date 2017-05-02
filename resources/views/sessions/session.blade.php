@@ -138,9 +138,12 @@
         // components
         Vue.component('specialty-img', {
             props: ['id', 'acronym'],
-            template: '<img :src="url" height="24" class="tooltipped" :data-tooltip="this.acronym">',
+            template: '<a :href="url"><img :src="imageUrl" height="24" class="tooltipped" :data-tooltip="this.acronym"></a>',
             computed: {
                 url: function () {
+                    return '/especializacion/' + this.id;
+                },
+                imageUrl: function () {
                     return '/img/divisas/especialidades/' + this.id + '.png';
                 }
             }
