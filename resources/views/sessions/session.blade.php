@@ -33,6 +33,32 @@
                    </div>
                </div>
                <div class="col s12 l6">
+                   <p>Frecuencias del servicio</p>
+                   <div class="card-panel">
+                       <table class="highlight">
+                           <thead>
+                           <tr>
+                               <th data-field="id">{{ trans('messages.frequencies_name') }}</th>
+                               <th data-field="name">{{ trans('messages.frequencies_frequency') }}</th>
+                           </tr>
+                           </thead>
+
+                           <tbody>
+
+                           <tr v-for="freq in gameSession.freq.content">
+                               <td>@{{ freq[0] }}</td>
+                               <td>
+                                   <a onclick="Materialize.toast('Copiada al portapapeles', 4000)" title="Copiar" ref="#!" style="cursor: pointer;" class="freq-button freq-copy tooltipped" data-tooltip="Copiar frecuencia al portapapeles" :data-clipboard-text="freq[1]"> <i class="tiny left material-icons" style="padding-left: 8px">content_copy</i>
+                                   </a>
+                                   <span class="spoiler">@{{ freq[1]}}</span>
+                               </td>
+                           </tr>
+
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+               <div class="col s12 l6">
                    <p>@{{ gameSession.works.length }} en el servicio</p>
                    <div class="card-panel">
                        <table class="highlight">
@@ -60,32 +86,7 @@
                        </table>
                    </div>
                </div>
-               <div class="col s12 l6">
-                   <p>Frecuencias del servicio</p>
-                   <div class="card-panel">
-                       <table class="highlight">
-                           <thead>
-                           <tr>
-                               <th data-field="id">{{ trans('messages.frequencies_name') }}</th>
-                               <th data-field="name">{{ trans('messages.frequencies_frequency') }}</th>
-                           </tr>
-                           </thead>
 
-                           <tbody>
-
-                           <tr v-for="freq in gameSession.freq.content">
-                               <td>@{{ freq[0] }}</td>
-                               <td>
-                                   <a onclick="Materialize.toast('Copiada al portapapeles', 4000)" title="Copiar" ref="#!" style="cursor: pointer;" class="freq-button freq-copy tooltipped" data-tooltip="Copiar frecuencia al portapapeles" :data-clipboard-text="freq[1]"> <i class="tiny left material-icons" style="padding-left: 8px">content_copy</i>
-                                   </a>
-                                   <span class="spoiler">@{{ freq[1]}}</span>
-                               </td>
-                           </tr>
-
-                           </tbody>
-                       </table>
-                   </div>
-               </div>
                <div class="col l6 s12" v-if="false">
                    <p>Situaciones posibles según agentes de servicio</p>
                    <div class="card-panel">
@@ -138,7 +139,7 @@
                 ended: false,
             },
             created: function () {
-              this.timer = setInterval(this.update, 10000);
+              this.timer = setInterval(this.update, 60000);
             },
             methods: {
               kick: function (work) {
