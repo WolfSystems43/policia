@@ -97,6 +97,86 @@
 		</div>
 		@endif
 
+		@if(Auth::user()->isMando())
+
+			@if($user->isWorking())
+				<br>
+				<div class="card-panel">
+					<b>En servicio actualmente</b>
+					<p>{{ $user->name }} se encuentra desde las {{ $user->getWork()->created_at->format('H:i') }}
+						de servicio en "{{ $user->getWork()->gameSession->server->name }}".</p>
+				</div>
+			@endif
+
+			<p>Servicios de los últimos dos meses</p>
+			<div class="card-panel">
+				<table class="highlight">
+					<thead>
+						<th>Tipo</th>
+						<th>Duración</th>
+						<th>Entrada</th>
+						<th>Hora salida</th>
+					</thead>
+					<tbody>
+						@foreach($user->works()->withoutGlobalScopes([App\Scopes\OngoingScope::class])->where([
+						['created_at', '>', \Carbon\Carbon::now()->subMonths(2)],
+						['end_reason', "!=", "cancel_user"],
+						['end_reason', "!=", "cancel_offline"],
+						['end_reason', "!=", "cancel_end"],
+						])->orderBy('end_at', 'desc')->get() as $work)
+						<tr>
+							<td>
+								@php
+									$reason = "(?)";
+									$reason_icon = null;
+									switch ($work->end_reason) {
+										case "user":
+											$reason = "Finalizado";
+											$reason_icon = 'done';
+											break;
+										case "cancel_user":
+											$reason = "<20 min";
+											$reason_icon = 'timer_off';
+											break;
+										case "offline":
+											$reason = "Desconectado";
+											$reason_icon = 'cloud_off';
+											break;
+										case "cancel_offline":
+											$reason = "<20min desconectado";
+											$reason_icon = 'timer_off';
+											break;
+										case "end":
+											$reason = "Final del servicio";
+											$reason_icon = 'done';
+											break;
+										case "cancel_end":
+											$reason = "Final servicio <20min";
+											$reason_icon = 'timer_off';
+											break;
+										case "kick":
+											$reason = "Expulsado";
+											$reason_icon = 'remove_circle_outline';
+											break;
+										default:
+											$reason = null;
+											$reason_icon = 'help_outline';
+											break;
+									}
+
+								@endphp
+								<i class="material-icons left">{{ $reason_icon }}</i> {{ $reason }}
+							</td>
+							<td>{{ is_null($work->end_at) ? "-" : gmdate('H:i:s', $work->end_at->diffInSeconds($work->created_at)) }}</td>
+							<td>{{ $work->created_at->format("d/m/y H:i") }}</td>
+							<td>{{ is_null($work->end_at) ? "-" : $work->end_at->format("H:i") }}</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
+		@endif
+
 		@if( Auth::user()->id != $user->id)
 		<a href="{{ route('ticket_new', ['id' => $user->id]) }}" class="btn grey darken-1 waves-effect">{{ trans('messages.profile_complaint_button') }}</a>
 		@endif
@@ -124,6 +204,7 @@
 		<a href="/admin/user/{{ $user->id }}/edit" class="btn black white-text waves-effect waves-light"><i class="material-icons left">developer_mode</i> {{ trans('messages.profile_admin_edit') }}</a>
 		</span>
 		@endcan
+
 		
 </div>
 @endsection

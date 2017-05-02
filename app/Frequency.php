@@ -24,4 +24,9 @@ class Frequency extends Model
         Carbon::setLocale('es');
         return $dt->diffForHumans();
     }
+
+    public function gameSession()
+    {
+        return $this->belongsTo(GameSession::class);
+    }
 }

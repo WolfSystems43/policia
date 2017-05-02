@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\RegenerateFrequencies::class,
+        Commands\CheckGameSessions::class,
+        Commands\UpdateGameSession::class,
     ];
 
     /**
@@ -26,7 +28,15 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('frequencies:regenerate')->cron('0 4-22/6 * * *');
+        // $schedule->command('frequencies:regenerate')->cron('0 4-22/6 * * *');
+
+        $schedule->command('gamesessions:check')->everyFiveMinutes();
+
+        // En cada reinicio hacer nuevas sesiones
+        $schedule->command('gamesessions:update 04')->dailyAt('03:55');
+        $schedule->command('gamesessions:update 10')->dailyAt('09:55');
+        $schedule->command('gamesessions:update 16')->dailyAt('15:55');
+        $schedule->command('gamesessions:update 22')->dailyAt('21:55');
     }
 
     /**

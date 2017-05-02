@@ -11,6 +11,21 @@
             <div class="col s12 m4">
                <p>{{ trans('messages.home_links_title') }}</p>
                <div class="row">
+                   <div class="col s12">
+                       @if(! Auth::user()->isWorking())
+                       <a href="{{ route('start-work') }}">
+                           <div class="card-panel hoverable truncate">
+                               <i class="left material-icons">play_arrow</i> Entrar de servicio
+                           </div>
+                       </a>
+                       @else
+                           <a href="{{ route('start-work') }}">
+                               <div class="card-panel hoverable truncate light-blue darken-1 white-text">
+                                   <i class="left material-icons">check_circle</i> En servicio <small>Turno de {{Auth::user()->getWork()->gameSession->getName()}}</small>
+                               </div>
+                           </a>
+                       @endif
+                   </div>
                 @foreach($links as $link)
                     <div class="col s12">
                         <a href="{{ url($link[1]) }}">

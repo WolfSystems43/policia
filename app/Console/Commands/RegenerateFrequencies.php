@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\GameSession;
 use Illuminate\Console\Command;
 
 use Illuminate\Support\Facades\Log;
@@ -17,7 +18,7 @@ class RegenerateFrequencies extends Command
      *
      * @var string
      */
-    protected $signature = 'frequencies:regenerate';
+    protected $signature = 'frequencies:regenerate {gamesession}';
 
     /**
      * The console command description.
@@ -68,7 +69,10 @@ class RegenerateFrequencies extends Command
         }
         $frequency->content = $freq;
         $frequency->user_id = 1;
-        $frequency->save();
+
+        $gameSession = GameSession::findOrFail($this->argument('gamesession'));
+        $gameSession->frequencies()->save($frequency);
+
         Cache::forget('frequency_version');
     }
 }
