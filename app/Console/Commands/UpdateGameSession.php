@@ -46,9 +46,6 @@ class UpdateGameSession extends Command
             $server->gameSessions()->withoutGlobalScopes([PastSessionScope::class])->where('closed', 0)
                 ->where('server_id', $server->id)->each(function ($gameSession) {
                     $this->info("Cerrando #".$gameSession->id);
-                    // Close the session
-                    $gameSession->closed = true;
-                    $gameSession->save();
                     // End all works
                     $gameSession->works->each(function ($work) {
 
@@ -64,6 +61,9 @@ class UpdateGameSession extends Command
                         $work->save();
                         $this->info("Terminando trabajo #".$work->id);
                     });
+                    // Close the session
+                    $gameSession->closed = true;
+                    $gameSession->save();
                 });
 
             // Create new session for the server
