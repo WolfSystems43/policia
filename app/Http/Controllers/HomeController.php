@@ -34,10 +34,10 @@ class HomeController extends Controller
             ['Multas y sanciones', 'multas', 'euro_symbol'], 
             ['Normativa', 'normativa-interna', 'class'], 
             ['Zonas de Asignación', 'zonas-de-asignacion', 'layers'],
-            ['Lista del personal', 'lista', 'group'], 
-            ['Calendario', 'calendario', 'event'], 
+            ['Lista del personal', 'lista', 'group'],
+            ['Especializaciones', 'especializacion', 'work'],
+            ['Calendario', 'calendario', 'event'],
             ['Otros enlaces', 'enlaces', 'link'],
-            ['Condecoraciones', 'condecoraciones', 'card_giftcard'],
         ];
 
         $user = User::findOrFail(Auth::user()->id);
