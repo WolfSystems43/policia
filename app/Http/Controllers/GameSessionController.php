@@ -92,6 +92,10 @@ class GameSessionController extends Controller
 
     public function sessionApiKick(Request $request)
     {
+        if(! Auth::user()->isMando) {
+            abort(403);
+        }
+
         $work = Work::findOrFail($request->work_id);
 
         $work->end_reason = "kick";
