@@ -54,7 +54,7 @@
                                         <small>
                                             Compañeros en el servicio ({{$gameSession->works()->count()}}):
                                         @foreach($gameSession->works as $work)
-                                            {{ $work->user->name }}@if(!$loop->last), @endif
+                                            {{ $work->user->name }}@if(Auth::user()->isMando()) ({{ $work->created_at->format('H:i') }})@endif @if(!$loop->last)- @endif
                                         @endforeach
                                         </small>
                                     @endif
