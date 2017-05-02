@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Server;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -71,12 +72,15 @@ class FrequencyController extends Controller
         return view('frequencies.list')->with('frequencies', $frequencies)->with('frequency', $freq);
     }
 
-    public function emsApi($key) {
+    public function emsApi($server, $key) {
+
+        $server = Server::findOrFail($server);
+
         if(!($key == env('APP_EMS', ""))) {
             abort(403);
         }
 
-        $freq = Frequency::orderBy('created_at', 'desc')->first();
+        $freq = $server->gameSessions()->latest()->first()->frequencies()->latest()->first();
         $ems = collect($freq->content)->where(0, 'EMS')->first();
         return $ems[1];
     }
