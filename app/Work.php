@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Work extends Model
 {
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'end_at'
+    ];
 
     protected $hidden = [
         'end_at', 'end_reason', 'updated_at', 'user_id',
