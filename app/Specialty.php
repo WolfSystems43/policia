@@ -15,6 +15,9 @@ class Specialty extends Model
         parent::boot();
     }
 
+    protected $hidden = [
+      'message', 'description', 'pivot', 'user_id', 'created_at', 'updated_at', 'frequency', 'secret'
+    ];
 
     protected $fillable = [
         'name', 'acronym', 'description', 'message', 'secret', 'user_id', 'message'

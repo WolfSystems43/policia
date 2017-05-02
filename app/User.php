@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Specialty')->withTimestamps();
     }
 
+    public function visibleSpecialties()
+    {
+        return $this->specialties()->where('secret', 0);
+    }
+
     public function ownedSpecialties() {
         return $this->hasMany('App\Specialty');
     }

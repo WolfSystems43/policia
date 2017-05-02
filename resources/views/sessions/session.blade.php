@@ -66,6 +66,7 @@
                            <tr>
                                <th></th>
                                <th>Nombre</th>
+                               <th></th>
                                <th>Entrada</th>
                                <th v-if="mando"></th>
                            </tr>
@@ -79,6 +80,11 @@
                                    </center>
                                </td>
                                <td>@{{ work.user.name }}</td>
+                               <td>
+                                   <span style="padding-right: 8px" v-for="specialty in work.user.visible_specialties">
+                                       <specialty-img :id="specialty.id" :acronym="specialty.acronym"></specialty-img>
+                                   </span>
+                               </td>
                                <td>@{{ moment(work.created_at).format('H:mm') }}</td>
                                <td v-if="mando"><i class="material-icons tiny red-text tooltipped" data-tooltip="MANDO: Echar del servicio" @click="kick(work)">remove_circle_outline</i></td>
                            </tr>
@@ -128,10 +134,23 @@
         // Vue for this page
         moment.locale('es');
         axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        // components
+        Vue.component('specialty-img', {
+            props: ['id', 'acronym'],
+            template: '<img :src="url" height="24" class="tooltipped" :data-tooltip="this.acronym">',
+            computed: {
+                url: function () {
+                    return '/img/divisas/especialidades/' + this.id + '.png';
+                }
+            }
+        });
+
+        // vue
         var vm = new Vue({
             el: '#app',
             data: {
-                gameSession: JSON.parse('{!! Auth::user()->getWork()->gameSession->load(['server', 'works.user']) !!}'),
+                gameSession: JSON.parse('{!! Auth::user()->getWork()->gameSession->load(['server', 'works.user', 'works.user.visibleSpecialties']) !!}'),
                 load: moment('{!! \Carbon\Carbon::now()->toDateTimeString() !!}'),
                 mando: {{ Auth::user()->isMando() ? "true" : "false" }},
                 loading: false,

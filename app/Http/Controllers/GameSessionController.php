@@ -87,7 +87,7 @@ class GameSessionController extends Controller
         if(! Auth::user()->isWorking()) {
             abort(404);
         }
-        return Auth::user()->getWork()->gameSession->load(['server', 'works.user']);
+        return Auth::user()->getWork()->gameSession->load(['server', 'works.user', 'works.user.visibleSpecialties']);
     }
 
     public function sessionApiKick(Request $request)
