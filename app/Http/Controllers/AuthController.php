@@ -30,10 +30,10 @@ class AuthController extends Controller
             if (!is_null($info)) {
                 $user = User::where('steamid', $info->steamID64)->first();
                 if (is_null($user)) {
-                	return redirect('/')->with('status', 'No estás dado de alta como policía.');
+                	return redirect('/')->with('status', trans('messages.login.not_found'));
                 }
                 if($user->isDisabled()) {
-                    return redirect('/')->with('status', 'Tu cuenta está desactivada.');
+                    return redirect('/')->with('status', trans('messages.login.disabled'));
                 }
                 Auth::login($user, true);
                 return redirect('/home'); // redirect to site

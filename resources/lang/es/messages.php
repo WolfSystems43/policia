@@ -121,4 +121,7 @@ return [
 		// Detalle de comunicado (posts.view)
 		'post_back' => '<< lista de comunicados',
 		'post_footer' => 'Por <a href=":route">:name</a> :ago',
+
+    'login.not_found' => 'No estás dado de alta como Policía.',
+    'login.disabled' => 'Tu cuenta está desactivada',
 ];
