@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a5d963ccaaaaec05f5117c86219df539",
+    "content-hash": "8b29250f65e4e2af8ac456d2b5574224",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -111,16 +111,16 @@
         },
         {
             "name": "austinb/gameq",
-            "version": "v3.0.10",
+            "version": "dev-dev-arma3-bugfix",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Austinb/GameQ.git",
-                "reference": "76826bda12397ab3dea96198cf7bfb9ae3cf754a"
+                "url": "https://github.com/Apecengo/GameQ.git",
+                "reference": "d658dde55c670ee2f8c08637b68f0c060acc7e87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Austinb/GameQ/zipball/76826bda12397ab3dea96198cf7bfb9ae3cf754a",
-                "reference": "76826bda12397ab3dea96198cf7bfb9ae3cf754a",
+                "url": "https://api.github.com/repos/Apecengo/GameQ/zipball/d658dde55c670ee2f8c08637b68f0c060acc7e87",
+                "reference": "d658dde55c670ee2f8c08637b68f0c060acc7e87",
                 "shasum": ""
             },
             "require": {
@@ -133,9 +133,9 @@
                 "ext-curl": "*",
                 "phpmd/phpmd": "@stable",
                 "phpunit/php-invoker": "*",
-                "phpunit/phpunit": "@stable",
+                "phpunit/phpunit": "^4.8 || ^6.0",
                 "satooshi/php-coveralls": "~1.0",
-                "squizlabs/php_codesniffer": "2.7.*@stable"
+                "squizlabs/php_codesniffer": "2.8.*@stable"
             },
             "type": "library",
             "autoload": {
@@ -143,43 +143,47 @@
                     "GameQ\\": "src/GameQ/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "GameQ\\Tests\\": "tests"
+                }
+            },
             "license": [
                 "LGPL-3.0+"
             ],
             "authors": [
                 {
-                    "name": "Christoph Kretzschmar",
-                    "email": "blackskyliner@googlemail.com",
-                    "homepage": "https://github.com/Blackskyliner",
-                    "role": "Developer"
-                },
-                {
                     "name": "Austin Bischoff",
                     "email": "austin.bischoff@gmail.com",
-                    "homepage": "https://github.com/Austinb",
-                    "role": "Packagist/Composer Maintainer, Developer"
+                    "role": "Packagist/Composer Maintainer, Developer",
+                    "homepage": "https://github.com/Austinb"
                 },
                 {
-                    "name": "Alexander Hambalgo",
-                    "homepage": "http://balgo.users.sourceforge.net/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Holger",
-                    "homepage": "http://icet33.users.sourceforge.net/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Sebastian Weidenbach",
-                    "homepage": "http://sebastianwe.users.sourceforge.net/",
-                    "role": "Developer"
+                    "name": "Christoph Kretzschmar",
+                    "email": "blackskyliner@googlemail.com",
+                    "role": "Developer",
+                    "homepage": "https://github.com/Blackskyliner"
                 },
                 {
                     "name": "Marcel Bößendörfer",
                     "email": "m.boessendoerfer@marbis.net",
-                    "homepage": "https://github.com/nitrado",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/nitrado"
+                },
+                {
+                    "name": "Alexander Hambalgo",
+                    "role": "Developer",
+                    "homepage": "http://balgo.users.sourceforge.net/"
+                },
+                {
+                    "name": "Holger",
+                    "role": "Developer",
+                    "homepage": "http://icet33.users.sourceforge.net/"
+                },
+                {
+                    "name": "Sebastian Weidenbach",
+                    "role": "Developer",
+                    "homepage": "http://sebastianwe.users.sourceforge.net/"
                 }
             ],
             "description": "GameQ Gameserver Library",
@@ -187,7 +191,12 @@
                 "gameq",
                 "serverstatus"
             ],
-            "time": "2016-12-19T19:16:44+00:00"
+            "support": {
+                "source": "https://github.com/Austinb/GameQ/v3",
+                "issues": "https://github.com/Austinb/GameQ/issues",
+                "wiki": "https://github.com/Austinb/GameQ/wiki"
+            },
+            "time": "2017-05-16T17:21:09+00:00"
         },
         {
             "name": "backpack/base",
@@ -1509,19 +1518,20 @@
         },
         {
             "name": "invisnik/laravel-steam-auth",
-            "version": "v2.3.4",
+            "version": "v2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/invisnik/laravel-steam-auth.git",
-                "reference": "0d9ec0ecdad1ef15a8b5f58924b604bc83232513"
+                "reference": "9ce40b4c24abbb0ef68cad76c7b0e00a1100beb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/invisnik/laravel-steam-auth/zipball/0d9ec0ecdad1ef15a8b5f58924b604bc83232513",
-                "reference": "0d9ec0ecdad1ef15a8b5f58924b604bc83232513",
+                "url": "https://api.github.com/repos/invisnik/laravel-steam-auth/zipball/9ce40b4c24abbb0ef68cad76c7b0e00a1100beb5",
+                "reference": "9ce40b4c24abbb0ef68cad76c7b0e00a1100beb5",
                 "shasum": ""
             },
             "require": {
+                "ext-bcmath": "*",
                 "guzzlehttp/guzzle": "^6.2",
                 "illuminate/http": "5.*",
                 "illuminate/routing": "5.*",
@@ -1553,7 +1563,7 @@
                 "laravel",
                 "steam"
             ],
-            "time": "2017-05-09T07:59:05+00:00"
+            "time": "2017-05-16T08:18:22+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2806,6 +2816,121 @@
                 "uuid"
             ],
             "time": "2017-03-26T20:37:53+00:00"
+        },
+        {
+            "name": "sentry/sentry",
+            "version": "1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/getsentry/sentry-php.git",
+                "reference": "5bee26136ab3fc166334cd972892bf71bd361558"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/5bee26136ab3fc166334cd972892bf71bd361558",
+                "reference": "5bee26136ab3fc166334cd972892bf71bd361558",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.2.4"
+            },
+            "conflict": {
+                "raven/raven": "*"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.8.0",
+                "monolog/monolog": "*",
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "suggest": {
+                "monolog/monolog": "Automatically capture Monolog events as breadcrumbs"
+            },
+            "bin": [
+                "bin/sentry"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.6.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Raven_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "David Cramer",
+                    "email": "dcramer@gmail.com"
+                }
+            ],
+            "description": "A PHP client for Sentry (http://getsentry.com)",
+            "homepage": "http://getsentry.com",
+            "keywords": [
+                "log",
+                "logging"
+            ],
+            "time": "2017-02-03T07:32:53+00:00"
+        },
+        {
+            "name": "sentry/sentry-laravel",
+            "version": "0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/getsentry/sentry-laravel.git",
+                "reference": "c1471d1d7fff0fa5618ecfb936eb6a523c1ea8fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/getsentry/sentry-laravel/zipball/c1471d1d7fff0fa5618ecfb936eb6a523c1ea8fa",
+                "reference": "c1471d1d7fff0fa5618ecfb936eb6a523c1ea8fa",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.*|5.*",
+                "php": ">=5.2.4",
+                "sentry/sentry": ">=1.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.8.0",
+                "phpunit/phpunit": "^4.6.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.7.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Sentry\\SentryLaravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Cramer",
+                    "email": "dcramer@gmail.com"
+                }
+            ],
+            "description": "Laravel integration for Sentry (https://sentry.io)",
+            "homepage": "https://sentry.io",
+            "keywords": [
+                "errors",
+                "laravel",
+                "logging",
+                "sentry"
+            ],
+            "time": "2017-04-21T17:44:27+00:00"
         },
         {
             "name": "spatie/laravel-tail",
@@ -5432,7 +5557,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "austinb/gameq": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

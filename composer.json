@@ -7,7 +7,6 @@
     "require": {
         "php": ">=5.6.4",
         "alt-three/emoji": "^4.1",
-        "austinb/gameq": "~3.0",
         "backpack/base": "^0.7.14",
         "backpack/crud": "^3.2.0",
         "backpack/pagemanager": "^1.1",
@@ -17,7 +16,9 @@
         "invisnik/laravel-steam-auth": "2.*",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "^1.0",
-        "spatie/laravel-tail": "^1.2"
+        "sentry/sentry-laravel": "^0.7.0",
+        "spatie/laravel-tail": "^1.2",
+        "austinb/gameq": "dev-dev-arma3-bugfix"
     },
     "require-dev": {
         "backpack/generators": "^1.1",
@@ -59,5 +60,10 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/apecengo/gameq"
+        }]
 }

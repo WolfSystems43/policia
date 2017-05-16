@@ -184,6 +184,7 @@ return [
         Backpack\Settings\SettingsServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         Spatie\Tail\TailServiceProvider::class,
+        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
 
 
         /*
@@ -243,6 +244,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
+        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
 
     ],
 
