@@ -92,7 +92,7 @@ class GameSessionController extends Controller
 
     public function sessionApiKick(Request $request)
     {
-        if(! Auth::user()->isMando) {
+        if(! Auth::user()->isMando()) {
             abort(403);
         }
 
