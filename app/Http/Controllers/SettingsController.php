@@ -101,4 +101,24 @@ class SettingsController extends Controller
         return redirect('/home')->with('status', 'Correo verificado con éxito.');
 
     }
+
+    /**
+     * Dar de baja la cuenta.
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function disableAccount() {
+        $user = Auth::user();
+
+        $user->admin = 0;
+        $user->rank = 0;
+        $user->corp = 0;
+        $user->grants()->delete();
+        $user->disabled = 1;
+        $user->save();
+
+        Auth::logout();
+
+        return redirect('/')->with('status', 'Cuenta desactivada. Muchas gracias por todo.');
+
+    }
 }
