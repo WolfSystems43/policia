@@ -20,7 +20,7 @@ class GameSessionController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['sessionApi']]);
     }
 
     public function index()
@@ -94,6 +94,9 @@ class GameSessionController extends Controller
 
     public function sessionApi()
     {
+        if(! Auth::check()) {
+            abort(404);
+        }
         if(! Auth::user()->isWorking()) {
             abort(404);
         }
