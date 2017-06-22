@@ -56,8 +56,12 @@ class CheckGameSessions extends Command
                             $this->info("Usuario #" . $work->user->id . " offline, más de 20 minutos on");
                         }
                         $work->end_at = Carbon::now();
-                        $work->save();
                     }
+                    if($work->user->isDisabled()) {
+                        $work->end_reason = "kick";
+                        $work->end_at = Carbon::now();
+                    }
+                    $work->save();
                 });
             } else {
                 $this->info("Saltando servidor, offline.");
