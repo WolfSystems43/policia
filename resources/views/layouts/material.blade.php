@@ -11,6 +11,7 @@
       <link rel="stylesheet" href="/css/material.css">
       @if(session('dark', false))
         <link rel="stylesheet" href="/css/material-dark.css">
+        <link rel="stylesheet" href="/css/select2-dark.css">
       @endif
 
       <title>@yield('title') - Policía POPLife</title>

@@ -9,7 +9,7 @@
   <div class="col s12">
     <div class="row">
       <div class="col s6">
-        <select id="user_search" style="width: 100%" name="implicated[]" class="js-example-basic-single browser-default" required="required">
+        <select id="user_search" style="width: 100%; background-color: #37474f" name="implicated[]" class="js-example-basic-single browser-default" required="required">
         </select>
       </div>
       <div class="col s6">
@@ -43,7 +43,7 @@
 
         <tbody>
         @foreach($cnp as $user)
-              <tr @if($user->isWorking()) class="green lighten-4" @endif>
+              <tr @if($user->isWorking()) class="online-color" @endif>
                 <td> <img class="left list-img" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
     			@if($user->rank >= 9)
                  <b>{{ $user->getRankName() }}</b>
@@ -94,7 +94,7 @@
 
         <tbody>
         @foreach($gc as $user)
-              <tr @if($user->isWorking()) class="green lighten-4" @endif>
+              <tr @if($user->isWorking()) class="online-color" @endif>
                 <td> <img class="left list-img" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
           @if($user->rank >= 9)
                  <b>{{ $user->getRankName() }}</b>
@@ -147,7 +147,7 @@
 
         <tbody>
         @foreach($cadetes as $user)
-              <tr @if($user->isWorking()) class="green lighten-4" @endif>
+              <tr @if($user->isWorking()) class="online-color" @endif>
                 <td> <img class="left list-img" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
           @if($user->rank >= 9)
                  <b>{{ $user->getRankName() }}</b>
