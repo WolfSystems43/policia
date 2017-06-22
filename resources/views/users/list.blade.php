@@ -43,7 +43,7 @@
 
         <tbody>
         @foreach($cnp as $user)
-              <tr>
+              <tr @if($user->isWorking()) class="green lighten-4" @endif>
                 <td> <img class="left list-img" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
     			@if($user->rank >= 9)
                  <b>{{ $user->getRankName() }}</b>
@@ -94,7 +94,7 @@
 
         <tbody>
         @foreach($gc as $user)
-              <tr>
+              <tr @if($user->isWorking()) class="green lighten-4" @endif>
                 <td> <img class="left list-img" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
           @if($user->rank >= 9)
                  <b>{{ $user->getRankName() }}</b>
@@ -147,7 +147,7 @@
 
         <tbody>
         @foreach($cadetes as $user)
-              <tr>
+              <tr @if($user->isWorking()) class="green lighten-4" @endif>
                 <td> <img class="left list-img" height="24" src="{{ $user->getRankImage() }}" alt="Divisa de {{ $user->getRankName() }}">
           @if($user->rank >= 9)
                  <b>{{ $user->getRankName() }}</b>
