@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Gate;
 
 class GameSessionController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $servers = Server::where('disabled', 0)->get();
