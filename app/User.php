@@ -294,6 +294,9 @@ class User extends Authenticatable
 
     public function getRankImage() {
         if($this->rank == 0) {
+            if($this->corp != 1 || $this->corp != 2) {
+                return "/img/divisas/civil.png";
+            }
             return "/img/divisas/cnpgc.png";
         }
 
@@ -305,7 +308,6 @@ class User extends Authenticatable
         if($this->corp == 1) {
             return "/img/divisas/cnp/". $this->rank .".png";
         }
-
         
         // Guardia Civil
         if($this->corp == 2) {
@@ -327,6 +329,9 @@ class User extends Authenticatable
         }
         if($this->corp == 2) {
             return "/img/divisas/gc.png";
+        }
+        if($this->rank == 0) {
+            return "/img/divisas/civil.png";
         }
         return "/img/divisas/cnpgc.png";
     }
