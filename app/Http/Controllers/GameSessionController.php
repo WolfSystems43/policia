@@ -50,7 +50,7 @@ class GameSessionController extends Controller
             abort(403);
         }
 
-        if (! $this->checkName($gameSession, Auth::user()->name)) {
+        if (! Auth::user()->isAdmin() && ! $this->checkName($gameSession, Auth::user()->name)) {
             return redirect(route('start-work'))->with('status', 'No detectamos que estés conectado al servidor. Inténtalo de nuevo en un minuto.')
                 ->with('name_error', true);
         }
