@@ -340,9 +340,9 @@ class User extends Authenticatable
         return $this->admin;
     }
 
-    // Míniom Inspector/Comandante o admin
+    // Mínimo Inspector/Comandante o admin
     public function isMando() {
-        return $this->rank >=9 || $this->isAdmin();
+        return $this->rank >=8 || $this->isAdmin();
     }
 
     public function isDisabled() {
