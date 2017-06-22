@@ -33,6 +33,7 @@ Route::group(['prefix' => 'ajustes'], function() {
 	Route::post('/', 'SettingsController@saveSettings');
 	Route::post('/correo', 'SettingsController@emailSettings')->name('email-settings');
 	Route::post('/correo/verificar', 'SettingsController@verifyEmail')->name('email-verify');
+    Route::post('/desactivar', 'SettingsController@disableAccount')->name('disable-account');
 });
 
 
@@ -103,6 +104,7 @@ Route::group(['prefix' => 'servicio'], function() {
     Route::post('/', 'GameSessionController@startWork');
     Route::post('/dejar', 'GameSessionController@endWork')->name('work-end');
 });
+
 
 // DEBUG
 Route::get('/debug', function() {
