@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResignationAccepted;
 use Illuminate\Http\Request;
 
 use Auth;
@@ -24,15 +25,22 @@ class TicketController extends Controller
         $this->middleware('auth');
     }
 
+    public function newTicketResign() {
+        if(Auth::user()->locked) {
+            abort(403);
+        }
+        return view('tickets.resign');
+    }
+
     public function newTicket($id = null) {
 
-    	if(!is_null($id)) {
+        if(!is_null($id)) {
             $user = User::findOrFail($id);
         } else {
             $user = null;
         }
 
-    	return view('tickets.new')->with('user', $user);
+        return view('tickets.new')->with('user', $user);
     }
 
     public function newTicketPost(Request $request, $id = null) {
@@ -99,6 +107,73 @@ class TicketController extends Controller
             if ($iABoss->emailEnabled() && ! $iABoss->isAdmin()) {
                 if($iABoss->validEmail()) {
                     Mail::to($iABoss)->send(new TicketCreated($ticket));   
+                }
+            }
+        }
+
+
+        return redirect(route('ticket', ['id' => $ticket->id]));
+    }
+
+    public function newTicketResignPost(Request $request, $id = null) {
+
+        if(Auth::user()->isWorking()) {
+            abort(403);
+        }
+
+        $this->validate($request, [
+            'body' => 'required|max:1000|min:20',
+            'check1' => 'accepted',
+            'check2' => 'accepted',
+            'check3' => 'accepted',
+        ],[
+            'body.required' => 'La descripción es obligatoria.',
+            'body.max' => 'La descripción no puede tener más de 100 caracteres.',
+            'body.min' => 'La descripción debe tener como mínimo 15 caracteres.',
+            'check1.accepted' => 'Acepta las condiciones',
+            'check2.accepted' => 'Acepta las condiciones',
+            'check3.accepted' => 'Acepta las condiciones',
+        ]);
+
+        $ticket = new Ticket;
+        $ticket->type = 2;
+        $ticket->title = "Dimisión " . Auth::user()->name;
+        $ticket->body = $request->body;
+        $ticket->anonymous = false;
+
+        Auth::user()->tickets()->save($ticket);
+
+        // Bloquear al usuario para que no pueda entrar de servicio
+        $user = Auth::user();
+        $user->locked = true;
+        $user->timestamps = false;
+        $user->save();
+        $user->timestamps = true;
+
+
+        // Mail logic
+
+        // Send mail to Admins if they have notifications enabled
+        foreach (User::all()->where('admin', 1) as $user) {
+            if($user->emailEnabled()) {
+                if($user->validEmail()) {
+                    Mail::to($user)->send(new TicketCreated($ticket));
+                }
+            }
+        }
+
+        // Send mail to IA boss if exists
+
+        $iABoss = null;
+
+        if(!is_null(Specialty::find(6))) {
+            $iABoss = Specialty::find(6)->user;
+        }
+
+        if (!is_null($iABoss)) {
+            if ($iABoss->emailEnabled() && ! $iABoss->isAdmin()) {
+                if($iABoss->validEmail()) {
+                    Mail::to($iABoss)->send(new TicketCreated($ticket));
                 }
             }
         }
@@ -188,6 +263,27 @@ class TicketController extends Controller
         $ticket->closed_at = Carbon::now();
         $ticket->result = $request->result;
         $ticket->save();
+
+        // Si es una dimisión desbloquear cuenta al cerrar
+        if($ticket->type === 2) {
+            $user = $ticket->user;
+
+            // Si ha sido aceptada, sacar al usuario de la web.
+            if($request->input('result') == 2) {
+                $user->admin = 0;
+                $user->rank = 0;
+                $user->corp = 0;
+                $user->grants()->delete();
+                $user->disabled = 1;
+                Mail::to($user)->send(new ResignationAccepted($user));
+            }
+            // En cualquier caso, desbloquear usuario.
+            $user->locked = false;
+
+            $user->timestamps = false;
+            $user->save();
+            $user->timestamps = true;
+        }
 
         return redirect(route('ticket', ['id' => $ticket->id]));
     }

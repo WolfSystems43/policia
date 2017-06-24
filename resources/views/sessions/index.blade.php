@@ -34,11 +34,17 @@
                                                 <br>
                                                 <a class="btn blue waves-effect disabled"><i class="material-icons left">play_arrow</i> Entrar al servicio</a>
                                         @else
+                                            @if(Auth::user()->locked)
+                                                <br>
+                                                    <a class="btn blue waves-effect disabled"><i class="material-icons left">play_arrow</i> Entrar al servicio</a>
+                                                    <br><small>Tu cuenta está limitada y no puede entrar de servicio en este momento.</small>
+                                            @else
                                             <form action="{{ route('start-work') }}" method="POST">
                                                 {{csrf_field()}}
                                                 <input type="hidden" name="id" value="{{$gameSession->id}}">
                                                 <button type="submit" href="" class="btn blue waves-effect"><i class="material-icons left">play_arrow</i> Entrar al servicio</button>
                                             </form>
+                                            @endif
                                         @endif
                                     @endcan
                                     @if($gameSession->start_at->isFuture())

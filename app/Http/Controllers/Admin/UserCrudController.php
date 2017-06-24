@@ -105,11 +105,18 @@ class UserCrudController extends CrudController
             'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
         ]);
         $this->crud->addField(
-        [   // Checkbox
-            'name' => 'disabled',
-            'label' => 'Cuenta desactivada',
-            'type' => 'checkbox'
-        ]);
+            [   // Checkbox
+                'name' => 'disabled',
+                'label' => 'Cuenta desactivada',
+                'type' => 'checkbox'
+            ]);
+
+        $this->crud->addField(
+            [   // Checkbox
+                'name' => 'locked',
+                'label' => 'Limitar: no dejar entrar al servicio ni dimitir',
+                'type' => 'checkbox'
+            ]);
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');

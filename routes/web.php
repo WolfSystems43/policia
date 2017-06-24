@@ -33,7 +33,6 @@ Route::group(['prefix' => 'ajustes'], function() {
 	Route::post('/', 'SettingsController@saveSettings');
 	Route::post('/correo', 'SettingsController@emailSettings')->name('email-settings');
 	Route::post('/correo/verificar', 'SettingsController@verifyEmail')->name('email-verify');
-    Route::post('/desactivar', 'SettingsController@disableAccount')->name('disable-account');
 });
 
 
@@ -72,8 +71,10 @@ Route::group(['prefix' => 'especializacion'], function() {
 Route::get('/freq/new', 'FrequencyController@generate')->name('freq-new');
 
 Route::group(['prefix' => 'ticket'], function() {
+    Route::get('/nuevo/dimitir', 'TicketController@newTicketResign')->name('ticket_new_resign');
+    Route::post('/nuevo/dimitir', 'TicketController@newTicketResignPost');
 	Route::get('/nuevo/{id?}', 'TicketController@newTicket')->name('ticket_new');
-	Route::post('/nuevo/{id?}', 'TicketController@newTicketPost');
+    Route::post('/nuevo/{id?}', 'TicketController@newTicketPost');
 	Route::get('/{id}', 'TicketController@viewTicket')->name('ticket');
 	Route::post('/{id}/respuesta', 'TicketController@newReply')->name('ticket_reply');
 	Route::post('/{id}/cerrar', 'TicketController@closeTicket')->name('ticket_close');

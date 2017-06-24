@@ -48,22 +48,11 @@ $unlock_page = true;
 		    <button type="submit" class="btn green waves-effect">Guardar</button>
 		  </form>
 		</div>
-		<a href="#modal-disable" class="btn white red-text waves-effect right"><i class="material-icons left">highlight_off</i> Dar de baja la cuenta</a>
-	<!-- Modal dar de baja -->
-	<div id="modal-disable" class="modal">
-		<div class="modal-content">
-			<h5>Dar de baja la cuenta</h5>
-			<p>Si has dejado la Policía, te animamos a, en un ejercicio de honestidad e integridad, desactivar tu cuenta por ti mismo.</p>
-			<p>Muchas gracias por tu aportación y duro trabajo.</p>
-			<p><b>Esta acción no se puede deshacer.</b><br><small>Se notificará a los comisarios.</small></p>
-		</div>
-		<div class="modal-footer">
-			<form action="{{ route('disable-account') }}" method="POST">
-				{{ csrf_field() }}
-				<button type="submit" class="waves-effect red-text btn-flat">Dar de baja</button>
-			</form>
-			<a href="#!" class="modal-action blue-text modal-close waves-effect btn-flat">Cancelar</a>
-		</div>
-	</div>
+		@if(Auth::user()->locked)
+			<a class=" disabled btn red waves-effect right"><i class="material-icons left">highlight_off</i> Dimitir</a>
+			<br><br><small class="right">Tienes una dimisión en curso.</small>
+		@else
+			<a href="{{ route('ticket_new_resign') }}" class="btn red waves-effect right"><i class="material-icons left">highlight_off</i> Dimitir</a>
+		@endif
 	</div>
 @endsection

@@ -26,6 +26,9 @@ class Ticket extends Model
     		case 1:
     			$text = "Queja interna";
     			break;
+            case 2:
+                $text = "Dimisión";
+                break;
     		
     		default:
     			$text = "Ticket";
