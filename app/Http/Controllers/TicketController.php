@@ -135,17 +135,57 @@ class TicketController extends Controller
             'check3.accepted' => 'Acepta las condiciones',
         ]);
 
+        $user = Auth::user();
+
         $ticket = new Ticket;
         $ticket->type = 2;
         $ticket->title = "Dimisión " . Auth::user()->name;
-        $ticket->body = $request->body;
+        $body = $request->body;
+        $body = $body . "\n\n--------------------\n\n(Información generada automáticamente:)";
+        $body = $body . "\nCuerpo: " . Auth::user()->getCorpName();
+        $body = $body . "\nRango: " . Auth::user()->getRankName();
+        if ($user->isAdmin()) {
+            $body = $body . "\nAdministrador del panel";
+        }
+        $body = $body . "\nEspecialidades:";
+        $count = 0;
+        foreach ($user->specialties as $specialty) {
+            $body = $body . " " . $specialty->acronym;
+            $count++;
+        }
+        if($count == 0) {
+            $body = $body . " ninguna";
+        }
+        $body = $body . "\nMedallas, licencias y diplomas:";
+        $count = 0;
+        foreach ($user->grants as $grant) {
+            $body = $body . " " . $grant->badge->name;
+            $count++;
+        }
+        if($count == 0) {
+            $body = $body . " ninguna";
+        }
+        $body = $body . "\nFecha de registro: " . $user->created_at->format("d/m/Y");
+        $ticket->body = $body;
         $ticket->anonymous = false;
 
         Auth::user()->tickets()->save($ticket);
 
-        // Bloquear al usuario para que no pueda entrar de servicio
+        // Si el usuario pertenece a asuntos internos, echarle del grupo
+        if(! is_null(\App\Specialty::find(6))) {
+            $ai = Specialty::findOrFail(6);
+            // Si la persona es el mando de Asuntos Internos quitarle el mando
+            if($ai->user->id == Auth::user()->id) {
+                $ai->user_id = null;
+                $ai->save();
+            }
+            $user->specialties()->detach(6);
+        }
+
+        // Bloquear al usuario para que no pueda entrar de servicio ni editar el panel de admin
         $user = Auth::user();
         $user->locked = true;
+        $user->admin = false;
         $user->timestamps = false;
         $user->save();
         $user->timestamps = true;
