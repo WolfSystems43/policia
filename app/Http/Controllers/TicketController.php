@@ -274,6 +274,7 @@ class TicketController extends Controller
                 $user->rank = 0;
                 $user->corp = 0;
                 $user->grants()->delete();
+                $user->specialties()->sync(null);
                 $user->disabled = 1;
                 Mail::to($user)->send(new ResignationAccepted($user));
             }
