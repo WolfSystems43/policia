@@ -173,10 +173,6 @@ class User extends Authenticatable
             return "Recluta/Cadete";
         }
 
-        if($this->rank == 12) {
-            return "Comisario principal";
-        }
-
         // Policía Nacional
         if($this->corp == 1) {
             switch ($this->rank) {
