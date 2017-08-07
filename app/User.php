@@ -205,23 +205,43 @@ class User extends Authenticatable
                     break;
                     
                 case 7:
-                    return "Oficial";
+                    return "Oficial Técnico";
                     break;
                     
                 case 8:
-                    return "Subinspector";
+                    return "Oficial Facultativo";
                     break;
                     
                 case 9:
-                    return "Inspector";
+                    return "Oficial de Policía";
                     break;
                     
                 case 10:
+                    return "Subinspector";
+                    break;
+
+                case 11:
+                    return "Capitán";
+                    break;
+
+                case 12:
+                    return "Inspector";
+                    break;
+
+                case 13:
                     return "Inspector Jefe";
                     break;
-                
-                case 11:
+
+                case 14:
+                    return "Subcomisario";
+                    break;
+
+                case 15:
                     return "Comisario";
+                    break;
+
+                case 16:
+                    return "Comisario Principal";
                     break;
 
                 default:
@@ -242,11 +262,11 @@ class User extends Authenticatable
                     break;
                     
                 case 3:
-                    return "Guardia Civil de 2ª";
+                    return "Guardia de Segunda";
                     break;
                     
                 case 4:
-                    return "Guardia Civil de 1ª Clase";
+                    return "Guardia de Primera";
                     break;
                     
                 case 5:
@@ -258,23 +278,43 @@ class User extends Authenticatable
                     break;
                     
                 case 7:
-                    return "Teniente";
+                    return "Brigada";
                     break;
                     
                 case 8:
-                    return "Capitán";
+                    return "Subteniente";
                     break;
                     
                 case 9:
-                    return "Comandante";
+                    return "Alférez";
                     break;
                     
                 case 10:
+                    return "Teniente";
+                    break;
+
+                case 11:
+                    return "Capitán";
+                    break;
+
+                case 12:
+                    return "Comandante";
+                    break;
+
+                case 13:
                     return "Teniente Coronel";
                     break;
-                
-                case 11:
+
+                case 14:
                     return "Coronel";
+                    break;
+
+                case 15:
+                    return "General";
+                    break;
+
+                case 16:
+                    return "Capitán General";
                     break;
 
                 default:
@@ -300,10 +340,10 @@ class User extends Authenticatable
             return "/img/divisas/cnpgc.png";
         }
 
+
         if($this->corp == 0) {
             return "/img/divisas/cnpgc.png";
         }
-
         // Policía Nacional
         if($this->corp == 1) {
             return "/img/divisas/cnp/". $this->rank .".png";
