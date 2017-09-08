@@ -6,19 +6,22 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "albertcht/invisible-recaptcha": "^1.4",
         "alt-three/emoji": "^4.1",
+        "austinb/gameq": "dev-dev-arma3-bugfix",
         "backpack/base": "^0.7.14",
         "backpack/crud": "^3.2.0",
         "backpack/pagemanager": "^1.1",
         "backpack/settings": "^2.0",
         "doctrine/dbal": "^2.5",
         "graham-campbell/markdown": "^7.1",
+        "guzzlehttp/guzzle": "^6.3",
         "invisnik/laravel-steam-auth": "2.*",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "^1.0",
+        "maknz/slack-laravel": "^1.0",
         "sentry/sentry-laravel": "^0.7.0",
-        "spatie/laravel-tail": "^1.2",
-        "austinb/gameq": "dev-dev-arma3-bugfix"
+        "spatie/laravel-tail": "^1.2"
     },
     "require-dev": {
         "backpack/generators": "^1.1",
