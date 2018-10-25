@@ -1,3 +1,11 @@
+**Abandonado**
+
+Este proyecto ha sido abandonado. Recomiendo hacer un nuevo sistema antes de usar el actual, debido a la carencia de tests y ausencia de uso de patrones y buenas prácticas recomendadas.
+
+Aun así, me lo pasé bien haciéndolo. Os lo dejo para que lo mejoréis, siempre que mantengáis los créditos.
+
+----
+
 Página interna de la Policía originalmente para [POPLife](http://plataoplomo.wtf).
 
 Hecha con [Laravel](https://laravel.com), [Laravel Backpack](https://backpackforlaravel.com/) y [Materializecss](http://materializecss.com), entre otras cosas.
